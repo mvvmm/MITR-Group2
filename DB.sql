@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `users`(
 	`firstname` varchar(15) NOT NULL,
 	`lastname` varchar(15) NOT NULL,
 	`privilege` varchar(15) NOT NULL,
-	`number` varchar(10),
+	`phone` varchar(10),
 	`email` varchar(50) NOT NULL,
 	`password` varchar(255) NOT NULL,
 	PRIMARY KEY (`uid`)
