@@ -16,14 +16,14 @@ CREATE TABLE IF NOT EXISTS `projects`(
 	`pid` int(11) NOT NULL AUTO_INCREMENT,
 	`address` varchar(15) NOT NULL,
 	`borough` varchar(15) NOT NULL,
-	`start` date,
-	`end` date,
+	`start` DATETIME,
+	`end` DATETIME,
 	PRIMARY KEY (`pid`)
 );
 CREATE TABLE IF NOT EXISTS `relations`(
 	`uid` int(11) NOT NULL,
 	`pid` int(11) NOT NULL,
-	`date` date,
+	`date` DATETIME,
 	FOREIGN KEY (uid) REFERENCES users (uid),
 	FOREIGN KEY (pid) REFERENCES projects (pid)
 );
