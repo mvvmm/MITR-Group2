@@ -1,6 +1,5 @@
 <?php
 include_once "db_connector.php";
-
 if(isset($_POST['email']) && isset($_POST['password'])){
 
   //Check if both passwords match
@@ -39,7 +38,7 @@ if(isset($_POST['email']) && isset($_POST['password'])){
     exit();
   }
   $stmt = $conn->prepare('INSERT INTO users (firstname, lastname, privilege, phone, email, password)
-    VALUES (:firstname, :lastname, "worker", :phone, :email, :password)');
+    VALUES (:firstname, :lastname, "employee", :phone, :email, :password)');
   $stmt->bindParam(':firstname',$first);
   $stmt->bindParam(':lastname',$last);
   $stmt->bindParam(':phone',$phone);
