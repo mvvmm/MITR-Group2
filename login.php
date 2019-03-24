@@ -1,11 +1,12 @@
+  <?php require_once 'controllers/login_session_check.php';?>
 <!doctype html>
-<html lang="en">
+<html class="bg-light" lang="en">
 <head>
   <meta charset="utf-8">
+  <?php include_once 'style.php';?>
   <title>Login</title>
-  <?php include 'style.php';?>
 </head>
-<body>
+<body class="bg-light">
   <div class="container">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">

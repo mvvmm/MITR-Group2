@@ -1,11 +1,12 @@
+<?php require_once 'controllers/session_check.php'?>
 <!doctype html>
-<html lang="en">
+<html class="bg-light" lang="en">
 <head>
   <?php include 'style.php';?>
   <meta charset="utf-8">
   <title>Create Account</title>
 </head>
-<body>
+<body class="bg-light">
 <div class="container">
   <div class="row">
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">

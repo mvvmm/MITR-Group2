@@ -16,7 +16,15 @@ if(isset($_POST['email']) && isset($_POST['password'])){
     exit();
   }else{
     if(password_verify($user_pass,$user['password'])){
-      // Do session stuff here but for right now we'll just redirect to index.
+      $stmt = $conn->prepare('INSERT INTO sessions (sessionID, uid,expiration)
+      VALUES (:sessionID,:uid,:expiration)');
+      $sessionID = uniqid('',true);
+      $stmt->bindParam(':sessionID',$sessionID);
+      $stmt->bindParam(':uid',$user['uid']);
+      $expiration_date = date("Y-m-d H:i:s",time() + (24*60*60));
+      $stmt->bindParam(':expiration',$expiration_date);
+      $stmt->execute();
+      setcookie("JAN-SESSION",$sessionID, time() + (24*60*60),'/');
       header("Location: ../index.php");
     }else{
       echo "<script>
