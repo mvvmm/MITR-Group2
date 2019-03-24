@@ -1,4 +1,3 @@
-<?php require_once 'controllers/session_check.php'?>
 <!doctype html>
 <html class="bg-light" lang="en">
 <head>
@@ -20,6 +19,7 @@
               <input type="text" class="form-control" name="first" placeholder="First Name" required />
             </div>
 
+CHANGE
             <div class="form-group">
               <label>Last Name</label>
               <input type="text" class="form-control" name="last" placeholder="Last Name" required/>
