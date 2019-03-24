@@ -1,5 +1,5 @@
 <?php
-include_once "db_connector.php";
+require_once "db_connector.php";
 $conn = dbConnect();
 if(isset($_POST['email']) && isset($_POST['password'])){
   $email = $_POST['email'];
@@ -14,6 +14,11 @@ if(isset($_POST['email']) && isset($_POST['password'])){
       window.location.replace(\" ../login.php \");
     </script>";
     exit();
+  }else if($user['approved'] != 1){
+    echo "<script>
+      alert('Your account activation is pending approval.');
+      window.location.replace(\" ../index.php \");
+    </script>";
   }else{
     if(password_verify($user_pass,$user['password'])){
       $stmt = $conn->prepare('INSERT INTO sessions (sessionID, uid,expiration)
