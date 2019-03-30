@@ -7,5 +7,6 @@ if ($privilege != 'admin'){
           window.location.replace('./index.php');
         </script>";
   exit();
+  //test
 }
 ?>
