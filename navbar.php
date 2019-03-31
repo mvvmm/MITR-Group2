@@ -1,6 +1,9 @@
 <?PHP
+require_once 'controllers/db_connector.php';
+require_once 'controllers/functions.php';
+$privilege  = getPrivilege();
 // check if employee
-if($_SESSION['privilege'] == 'employee')
+if($privilege == 'employee')
 {
     echo '
     <nav class="navbar navbar-default">
@@ -34,7 +37,7 @@ if($_SESSION['privilege'] == 'employee')
 }
 
 // check if scheduler
-if ($_SESSION['privilege'] == 'scheduler')
+if ($privilege == 'scheduler')
 {
     echo '
     <nav class="navbar navbar-default">
@@ -72,11 +75,11 @@ if ($_SESSION['privilege'] == 'scheduler')
             </div>
         </div>
     </nav>
-    ';   
+    ';
 }
 
 // check if admin
-if ($_SESSION['privilege'] == 'admin')
+if ($privilege == 'admin')
 {
     echo '
     <nav class="navbar navbar-default">
@@ -115,7 +118,7 @@ if ($_SESSION['privilege'] == 'admin')
             </div>
         </div>
     </nav>
-    ';     
+    ';
 }
 
 ?>
