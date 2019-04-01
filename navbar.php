@@ -6,31 +6,25 @@ $privilege  = getPrivilege();
 if($privilege == 'employee')
 {
     echo '
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <!-- toggle style depending on screen size: better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                    aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">JAN Renovation</a>
-            </div>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarFixed"
+            aria-controls="navbarFixed" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Jan Renovation</a>
 
-            <!-- navbar content -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="employee_pages/employee_schedule.php">Schedule</a></li>
-                    <li><a href="#">Upload Photo</a></li>
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Logout</a></li>
-                </ul>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarFixed">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Schedule <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Upload Photo</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="nav-link" href="#">Logout</a></li>
+            </ul>
         </div>
     </nav>
     ';
@@ -40,39 +34,34 @@ if($privilege == 'employee')
 if ($privilege == 'scheduler')
 {
     echo '
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <!-- toggle style depending on screen size: better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                    aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">JAN Renovation</a>
-            </div>
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarFixed"
+            aria-controls="navbarFixed" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Jan Renovation</a>
 
-            <!-- navbar content -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tools
-                        <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Overview</a></li>
-                            <li><a href="#">Assign</a></li>
-                            <li><a href="#">View Pictures</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Upload Photo</a></li>
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Logout</a></li>
-                </ul>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarFixed">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tools
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Overview</a>
+                        <a class="dropdown-item" href="#">Assign</a>
+                        <a class="dropdown-item" href="#">View Pictures</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Upload Photo</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="nav-link" href="#">Logout</a></li>
+            </ul>
         </div>
     </nav>
     ';
@@ -82,40 +71,35 @@ if ($privilege == 'scheduler')
 if ($privilege == 'admin')
 {
     echo '
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <!-- toggle style depending on screen size: better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                    aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">JAN Renovation</a>
-            </div>
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarFixed"
+            aria-controls="navbarFixed" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Jan Renovation</a>
 
-            <!-- navbar content -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tools
-                        <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Overview</a></li>
-                            <li><a href="#">Assign</a></li>
-                            <li><a href="#">View Pictures</a></li>
-                            <li><a href="#">Manage Schedulers</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Upload Photo</a></li>
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Logout</a></li>
-                </ul>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarFixed">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tools
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Overview</a>
+                        <a class="dropdown-item" href="#">Assign</a>
+                        <a class="dropdown-item" href="#">View Pictures</a>
+                        <a class="dropdown-item" href="#">Manage Schedulers</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Upload Photo</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="nav-link" href="#">Logout</a></li>
+            </ul>
         </div>
     </nav>
     ';
