@@ -10,6 +10,9 @@ require_once "controllers/admin_check.php";
   <title>Account Approval</title>
 </head>
 <body class='bg-light'>
+  <div class="p-5">
+    <?php include 'navbar.php';?>
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-lg-12">

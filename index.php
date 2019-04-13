@@ -8,17 +8,6 @@
 <body>
 <h1>Index</h1>
 <?php include 'navbar.php'; ?>
-<a class="btn btn-primary" href="create_account.php" role="button">Create Account</a>
-<a class="btn btn-primary" href="edit_account.php" role="button">Edit Account</a>
-<a class="btn btn-primary" href="account_approval.php" role="button">Account Approval</a>
-
-<?php
-if(isset($_COOKIE['JAN-SESSION'])){
-  echo "<a class='btn btn-primary' href='controllers/logout_controller.php'>Logout</a>";
-}else{
-  echo "<a class='btn btn-primary' href='login.php'>Login</a>";
-}
-?>
 
 </body>
 </html>
