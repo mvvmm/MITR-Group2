@@ -34,7 +34,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="#">Schedule</a></li>
-                        <li><a href="#">Clock In/Out</a></li>
+                        <li><a href="timesheet.php">Clock In/Out</a></li>
                         <li><a href="#">Upload Photo</a></li>
                     </ul>
 
@@ -64,9 +64,18 @@
             
 
             // var_dump(document);
-            $query = $dbconn->prepare('SELECT * FROM `timesheet` WHERE uid=3 ORDER BY starttime,endtime;');
+            $query = $dbconn->prepare('
+                SELECT t.uid,t.pid,t.starttime,t.endtime,p.address,p.borough
+                FROM `timesheet` t,
+                `projects` p
+                WHERE 
+                t.uid=3 
+                and p.pid = t.pid
+                ORDER BY starttime,endtime;'
+                );
             $query->execute(array(':starttime'=>$starttime,':endtime'=>$endtime));
             $result = $query->fetchAll();
+            // var_dump($result);
             // printf($result[0]["endtime"]);
             $arr= array();
             foreach($result as $value){
@@ -85,6 +94,8 @@
                 console.log(arr);
                 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday'];
                 for(var i=0;i<arr.length;i++){
+                    var borough = arr[i]['borough'];
+                    var address = arr[i]['address'];
                     var startdate = new Date(arr[i]['starttime']);
                     var enddate = new Date(arr[i]['endtime']);
                     var dayofweek = days[startdate.getDay()];
@@ -107,10 +118,18 @@
                     var textnode = document.createTextNode(endtime);  
                     node.appendChild(textnode);
                     document.getElementById(dayofweek).appendChild(node);
+
+                    var node = document.createElement('li'); 
+                    var textnode = document.createTextNode(address);  
+                    node.appendChild(textnode);
+                    document.getElementById(dayofweek).appendChild(node);
+
+                    var node = document.createElement('li'); 
+                    var textnode = document.createTextNode(borough);  
+                    node.appendChild(textnode);
+                    document.getElementById(dayofweek).appendChild(node);
                 }
                 console.log(document);
-            
-                
             })
             
             </script>"
