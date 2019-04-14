@@ -16,10 +16,9 @@
 
 	<style>
 		.dot {
-			height: 15px;
-			width: 15px;
+			height: 18px;
+			width: 18px;
 			margin: auto;
-			background-color: #bbb;
 			border-radius: 50%;
 			display: inline-block;
 		}
@@ -259,50 +258,37 @@
 			</div>
             </div>
 		</div>
-		<div class="card" style="width: 18rem;">
-			<div class="card-header">
-				Legend
+
+		<div class="card" style="width: 15rem;">
+			<div class="card-header">Legend</div>
+			<div class="card-body">
+				<table class="table table-borderless">
+					<tbody>
+							<tr>
+								<td><span class="dot" style="background-color: red;"></span></td>
+								<td align="left">= &emsp; Bronx</td>
+							</tr>
+							<tr>
+								<td><span class="dot" style="background-color: green;"></span></td>
+								<td align="left">= &emsp; Brooklyn</td>
+							</tr>
+							<tr>
+								<td><span class="dot" style="background-color: orange;"></span></td>
+								<td align="left">= &emsp; Manhattan</td>
+							</tr>
+							<tr>
+								<td><span class="dot" style="background-color: purple;"></span></td>
+								<td align="left">= &emsp; Queens</td>
+							</tr>
+							<tr>
+								<td><span class="dot" style="background-color: blue;"></span></td>
+								<td align="left">= &emsp; Staten Island</td>
+							</tr>
+						</tbody>
+					</table>
+
 			</div>
-			<ul class="list-group list-group-flush">
-				<li class="list-group-item"><div class="dot"></div> = The Bronx</li>
-				<li class="list-group-item">Manhattan</li>
-				<li class="list-group-item">Brooklyn</li>
-				<li class="list-group-item">Queens</li>
-				<li class="list-group-item">Staten Island</li>
-			</ul>
 		</div>
-
-		<table class="table">
-			<thead class="thead-light">
-				<tr>
-					<th colspan="3">Legend</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Cell</td>
-					<td>= Bronx</td>
-				</tr>
-				<tr>
-					<td>Cell</td>
-					<td>= Brooklyn</td>
-				</tr>
-				<tr>
-					<td>Cell</td>
-					<td>= Manhattan</td>
-				</tr>
-				<tr>
-					<td>Cell</td>
-					<td>= Queens</td>
-				</tr>
-				<tr>
-					<td>Cell</td>
-					<td>= Staten Island</td>
-				</tr>
-			</tbody>
-		</table>
-
-
 
 	</div>
 	
