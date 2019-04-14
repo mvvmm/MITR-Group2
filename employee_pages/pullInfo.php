@@ -67,10 +67,10 @@ if (mysqli_num_rows($result) > 0) {
             <tr>
                 <td>'.$row["firstname"] .' '. $row["lastname"].'</td>
         ');
-            
-            
-            
-            
+
+
+
+
         //echo("\t");
 
         // Get all the project ids and dates of those projects for the user
@@ -81,15 +81,18 @@ if (mysqli_num_rows($result) > 0) {
         for ($x = 0; $x < 5; $x++) {
             $result2 = mysqli_query($conn, $sql2);
             // Loop through all the relations for that user
+            $printed = False;
             while($row2 = mysqli_fetch_assoc($result2)) {
                 if (substr($row2["date"], 0, 10) == $daysArr[$x]) {
+                    $printed = True;
                     echo(
                         '<td>'.$row2["date"].'</td>'
                     );
-                } else {
-                    echo('<td></td>');
+                    break;
                 }
-                //echo(substr($row2["date"], 0, 8));
+            }
+            if ($printed == False) {
+                echo('<td></td>');
             }
         }
 
