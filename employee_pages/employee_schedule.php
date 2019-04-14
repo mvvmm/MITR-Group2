@@ -41,7 +41,7 @@
 
 
             <div class="row">
-                <div class="col-sm" id="monday">
+                <div class="col-lg" id="monday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -58,7 +58,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-sm" id="tuesday">
+                <div class="col-lg" id="tuesday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -75,7 +75,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-sm" id="wednesday">
+                <div class="col-lg" id="wednesday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -92,7 +92,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-sm" id="thursday">
+                <div class="col-lg" id="thursday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -109,7 +109,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-sm" id="friday">
+                <div class="col-lg" id="friday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
