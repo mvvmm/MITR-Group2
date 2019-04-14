@@ -41,22 +41,7 @@
 
 
             <div class="row">
-                <div class="col-md-4" id="monday">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col-sm">Monday</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td scope="row">test</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">test</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="col-sm" id="monday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -73,7 +58,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-4" id="tuesday">
+                <div class="col-sm" id="tuesday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -90,7 +75,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-4" id="wednesday">
+                <div class="col-sm" id="wednesday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -107,7 +92,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-4" id="thursday">
+                <div class="col-sm" id="thursday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -124,9 +109,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4" id="friday">
+                <div class="col-sm" id="friday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -143,7 +126,6 @@
                         </tbody>
                     </table>
                 </div>
-                
             </div>
             <!--
                 <div class="col-sm-12">
