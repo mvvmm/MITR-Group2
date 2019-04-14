@@ -41,11 +41,11 @@
 
 
             <div class="row">
-                <div class="col-md-3" id="monday">
+                <div class="col-md-4" id="monday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col-sm-2">Monday</th>
+                                <th scope="col-sm">Monday</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -60,7 +60,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col-sm-2">Monday</th>
+                                <th scope="col-sm">Monday</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -73,7 +73,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-3" id="tuesday">
+                <div class="col-md-4" id="tuesday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -90,7 +90,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-3" id="wednesday">
+                <div class="col-md-4" id="wednesday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -107,7 +107,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-3" id="thursday">
+                <div class="col-md-4" id="thursday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -126,7 +126,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3" id="friday">
+                <div class="col-md-4" id="friday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
