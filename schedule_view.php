@@ -275,7 +275,7 @@
 		<table class="table">
 			<thead class="thead-light">
 				<tr>
-					<th>Legend</th>
+					<th colspan="3">Legend</th>
 				</tr>
 			</thead>
 			<tbody>
