@@ -14,6 +14,16 @@
     <script src='calendar-js/jquery-ui.custom.min.js' type="text/javascript"></script>
     <script src='calendar-js/fullcalendar.js' type="text/javascript"></script>
 
+	<style>
+		.dot {
+			height: 15px;
+			width: 15px;
+			margin: auto;
+			background-color: #bbb;
+			border-radius: 50%;
+			display: inline-block;
+		}
+	</style>
 
     <script>
 
@@ -254,13 +264,45 @@
 				Legend
 			</div>
 			<ul class="list-group list-group-flush">
-				<li class="list-group-item"><span class="dot"></span> = The Bronx</li>
-				<li class="list-group-item">Manhattan</li>>
+				<li class="list-group-item"><div class="dot"></div> = The Bronx</li>
+				<li class="list-group-item">Manhattan</li>
 				<li class="list-group-item">Brooklyn</li>
 				<li class="list-group-item">Queens</li>
 				<li class="list-group-item">Staten Island</li>
 			</ul>
 		</div>
+
+		<table class="table">
+			<thead class="thead-light">
+				<tr>
+					<th>Legend</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Cell</td>
+					<td>= Bronx</td>
+				</tr>
+				<tr>
+					<td>Cell</td>
+					<td>= Brooklyn</td>
+				</tr>
+				<tr>
+					<td>Cell</td>
+					<td>= Manhattan</td>
+				</tr>
+				<tr>
+					<td>Cell</td>
+					<td>= Queens</td>
+				</tr>
+				<tr>
+					<td>Cell</td>
+					<td>= Staten Island</td>
+				</tr>
+			</tbody>
+		</table>
+
+
 
 	</div>
 	
