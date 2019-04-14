@@ -41,11 +41,26 @@
 
 
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3" id="monday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col-sm-2">Sunday</th>
+                                <th scope="col-sm-2">Monday</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row">test</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">test</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col-sm-2">Monday</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,11 +73,11 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3" id="tuesday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col-sm">Sunday</th>
+                                <th scope="col-sm">Tuesday</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -75,11 +90,11 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3" id="wednesday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col-sm">Sunday</th>
+                                <th scope="col-sm">Wednesday</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -92,11 +107,11 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3" id="thursday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col-sm">Sunday</th>
+                                <th scope="col-sm">Thursday</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -111,11 +126,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3" id="friday">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col-sm-2">Sunday</th>
+                                <th scope="col-sm-2">Friday</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -128,40 +143,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-3">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col-sm">Sunday</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td scope="row">test</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">test</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-md-3">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col-sm">Sunday</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td scope="row">test</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">test</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                
             </div>
             <!--
                 <div class="col-sm-12">
