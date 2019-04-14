@@ -13,6 +13,8 @@
 <html class="bg-light" lang="en">
   <head>
     <?php include 'style.php'?>
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.min.css">
     <meta charset="utf-8">
     <title>Edit Account</title>
   </head>
@@ -39,7 +41,7 @@
                       </select>
                   </div>
                   <div class="form-group">
-                      <label for="project">Select Employee</label>
+                      <label for="project">Select Project</label>
                       <select name="project" id="project" class="form-control">
                           <?php
                           // Add the employees to select screen
@@ -51,6 +53,16 @@
                           ?>
                       </select>
                   </div>
+
+                  <div id="datepairExample">
+                      <label for="dateInput">Select Date</label>
+                      <input name="dateInput" id="dateInput" type="text" class="date start" />
+                      <br>
+                      <label for="timeInput">Select Time</label>
+                      <input name="timeInput" id="timeInput" type="text" class="time start" />
+                  </div>
+
+
                   <div class="text-center">
                       <button class="btn btn-primary btn-clock text-uppercase" type="submit" name="Submit">Assign</button>
                   </div>
@@ -60,6 +72,27 @@
         </div>
       </div>
     </div>
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="js/jquery.timepicker.min.js"></script>
+<script>
+    // initialize input widgets first
+    $('#datepairExample .time').timepicker({
+        'showDuration': true,
+        'timeFormat': 'g:ia'
+    });
+
+    $('#datepairExample .date').datepicker({
+        'format': 'yyyy-m-d',
+        'autoclose': true
+    });
+
+    // initialize datepair
+    $('#datepairExample').datepair();
+</script>
+</div>
 
 
     <script src="js/jquery.js"></script>
