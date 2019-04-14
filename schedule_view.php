@@ -239,17 +239,34 @@
 </head>
 
 <body>
-        <?php /*include 'navbar.php';*/?>
+    <?php /*include 'navbar.php';*/?>
     <div class="container">
         <div class="row">
             <div class="col-sm-10">
 			<div id='wrap'>
 				<div id='calendar' class='card shadow-lg'></div>
-				<div style='clear:both'></div>
+				<!-- <div style='clear:both'></div> -->
 			</div>
             </div>
-        </div>
-    </div>
+		</div>
+		<div class="card" style="width: 18rem;">
+			<div class="card-header">
+				Legend
+			</div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item"><span class="dot"></span> = The Bronx</li>
+				<li class="list-group-item">Manhattan</li>>
+				<li class="list-group-item">Brooklyn</li>
+				<li class="list-group-item">Queens</li>
+				<li class="list-group-item">Staten Island</li>
+			</ul>
+		</div>
+
+	</div>
+	
+
+
+</div>
 
 </body>
 
