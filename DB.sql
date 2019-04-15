@@ -17,14 +17,14 @@ CREATE TABLE IF NOT EXISTS `projects`(
 	`pid` int(11) NOT NULL AUTO_INCREMENT,
 	`address` varchar(15) NOT NULL,
 	`borough` varchar(15) NOT NULL,
-	`start` DATETIME,
-	`end` DATETIME,
+	`start` DATE,
+	`end` DATE,
 	PRIMARY KEY (`pid`)
 );
 CREATE TABLE IF NOT EXISTS `relations`(
 	`uid` int(11) NOT NULL,
 	`pid` int(11) NOT NULL,
-	`date` DATETIME,
+	`date` DATE,
 	FOREIGN KEY (uid) REFERENCES users (uid),
 	FOREIGN KEY (pid) REFERENCES projects (pid)
 );
@@ -35,4 +35,12 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   `expiration` DATETIME,
   PRIMARY KEY (`sessionID`(191)),
 	FOREIGN KEY (uid) REFERENCES users (uid)
+);
+CREATE TABLE IF NOT EXISTS `timesheet`(
+	`uid` int(11) NOT NULL,
+	`pid` int(11) NOT NULL,
+	`starttime` DATETIME,
+	`endtime` DATETIME,
+	FOREIGN KEY (uid) REFERENCES users (uid),
+	FOREIGN KEY (pid) REFERENCES projects (pid)
 );

@@ -30,7 +30,7 @@ if(isset($_POST['email']) && isset($_POST['password'])){
       $stmt->bindParam(':expiration',$expiration_date);
       $stmt->execute();
       setcookie("JAN-SESSION",$sessionID, time() + (24*60*60),'/');
-      header("Location: ../index.php");
+      header("Location: ../workerpage.php");
     }else{
       echo "<script>
         alert('Your password is incorrect!');

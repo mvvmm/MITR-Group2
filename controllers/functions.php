@@ -1,4 +1,5 @@
 <?php
+require_once 'db_connector.php';
 function getPrivilege(){
     if(isset($_COOKIE['JAN-SESSION'])){
         $sessionID = $_COOKIE['JAN-SESSION'];
