@@ -60,11 +60,13 @@
             $result_explode = explode('|', $result);
             $uid = "1";
             $pid = $result_explode[0];
+
             // echo "Starttime: ". $starttimedate."<br />";
             $starttimedate = date($result_explode[1] ." " .$starttime);
             $endtimedate = date($result_explode[1] ." " .$endtime);
             // echo "Project id: ". $pid."<br />";
             echo "Starttime: ". $starttimedate."<br />";
+
             // echo "End time: ". $endtimedate."<br />";
             
             $dbconn = new PDO("mysql:host=$server;dbname=$dbname", $user, $pass);
