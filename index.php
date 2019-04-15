@@ -8,7 +8,5 @@
 <body>
 <?php include 'navbar.php'; ?>
 <h1>Index</h1>
-
-
 </body>
 </html>
