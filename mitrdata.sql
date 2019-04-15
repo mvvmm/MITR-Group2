@@ -45,11 +45,11 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 	FOREIGN KEY (uid) REFERENCES users (uid)
 );
 INSERT INTO `users` VALUES
-(1,'Bob','Marley','worker','1234567890','bob@marley.com','123'),
-(2,'Joe','Smo','worker','1234567890','joe@smo.com','321'),
-(3,'Jaryl','Ng','owner','1234567890','jaryl@ng.com','987'),
-(4,'John','Doe','admin','1234567890','john@doe.com','423'),
-(5,'Moe','Yas','admin','1234567890','moe@yas.com','324');
+(1,'Bob','Marley','worker','1234567890','bob@marley.com','123','0'),
+(2,'Joe','Smo','worker','1234567890','joe@smo.com','321','0'),
+(3,'Jaryl','Ng','owner','1234567890','jaryl@ng.com','987','0'),
+(4,'John','Doe','admin','1234567890','john@doe.com','423','0'),
+(5,'Moe','Yas','admin','1234567890','moe@yas.com','324','0');
 INSERT INTO `projects` VALUES
 (1,'123 2nd street','Manhattan','2019-1-19','2018-1-20'),
 (2,'244 Vermont St.','Bronx','2019-04-19','2019-05-03'),
@@ -69,7 +69,4 @@ INSERT INTO `timesheet` VALUES
 (2,2,'2019-04-19 12:00','2019-04-19 13:00'),
 (2,3,'2019-05-22 12:00','2019-05-22 13:00'),
 (2,4,'2019-05-20 12:00','2019-05-20 13:00'),
-(1,5,'2019-08-19 12:00','2019-08-19 13:00')
-(3,2,'2019-05-22 10:00','2019-05-22 13:00'),
-(3,3,'2019-05-23 11:00','2019-05-23 13:00'),
-(3,1,'2019-05-24 12:00','2019-05-24 13:00'),;
+(1,5,'2019-08-19 12:00','2019-08-19 13:00');

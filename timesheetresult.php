@@ -54,23 +54,26 @@
         if(isset($_POST['go'])){
           try {
             // create database
+            $dbconn = new PDO("mysql:host=$server;dbname=$dbname", $user, $pass);
+            $dbconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            include 'controllers/functions.php';
+
             $starttime=$_POST['starttime'];
             $endtime=$_POST['endtime'];
             $result=$_POST['jobsites'];
             $result_explode = explode('|', $result);
-            $uid = "1";
+            $uid = getUID();
             $pid = $result_explode[0];
 
             // echo "Starttime: ". $starttimedate."<br />";
             $starttimedate = date($result_explode[1] ." " .$starttime);
             $endtimedate = date($result_explode[1] ." " .$endtime);
             // echo "Project id: ". $pid."<br />";
-            echo "Starttime: ". $starttimedate."<br />";
+            // echo "Starttime: ". $starttimedate."<br />";
 
             // echo "End time: ". $endtimedate."<br />";
-            
-            $dbconn = new PDO("mysql:host=$server;dbname=$dbname", $user, $pass);
-            $dbconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
             $ins=$dbconn->prepare(
               'INSERT INTO `timesheet` (uid,pid,starttime,endtime)
               VALUES (:uid,:pid,:starttime,:endtime)'
@@ -90,13 +93,13 @@
             
             $s_time = "";
             $e_time = "";
-
+            
             $query = $dbconn->prepare('
                 SELECT t.uid,t.pid,t.starttime,t.endtime,p.address,p.borough
                 FROM `timesheet` t,
                 `projects` p
                 WHERE 
-                t.uid=1 
+                t.uid='.$uid.'
                 and p.pid = t.pid
                 ORDER BY starttime,endtime;'
                 );

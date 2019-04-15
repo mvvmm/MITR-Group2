@@ -59,7 +59,9 @@
         <br>
 
         <br>
-        
+
+
+         
         <select name="jobsites">
             <?php 
             $server = 'localhost';
@@ -69,16 +71,22 @@
             $dbconn = new PDO("mysql:host=$server;dbname=$dbname", $user, $pass);
             $dbconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             // $query = $dbconn->prepare('SELECT * FROM `projects`');
+            include 'controllers/functions.php';
+
+            $uid = getUID();
+
             $address = "";
             $borough = "";
             $date = "";
             $pid = "";
+            $uid = getUID();
+            // var_dump($uid);
             $query = $dbconn->prepare('
                 SELECT r.uid,r.pid,p.address,p.borough,r.date
                 FROM `relations` r,
                 `projects` p
                 WHERE 
-                r.uid=2
+                r.uid='.$uid.'
                 and p.pid = r.pid
                 ORDER BY date;'
                 );

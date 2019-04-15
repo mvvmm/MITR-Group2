@@ -1,4 +1,5 @@
 <?php
+require_once 'db_connector.php';
 function getPrivilege(){
     if(isset($_COOKIE['JAN-SESSION'])){
         $sessionID = $_COOKIE['JAN-SESSION'];
@@ -34,6 +35,18 @@ function getUID(){
       return $uid;
   }else{
       return 404;
+  }
+}
+
+function getQueuedAccountsCount(){
+  $conn = dbConnect();
+  $stmt = $conn->prepare('SELECT COUNT(uid) AS count FROM users WHERE approved = 0');
+  $stmt->execute();
+  $count = $stmt->fetch()['count'];
+  if($count == 0){
+    return '';
+  }else{
+    return $count;
   }
 }
 ?>

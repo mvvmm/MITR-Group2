@@ -37,8 +37,8 @@ if(isset($_POST['email']) && isset($_POST['password'])){
           </script>";
     exit();
   }
-  $stmt = $conn->prepare('INSERT INTO users (firstname, lastname, privilege, phone, email, password)
-    VALUES (:firstname, :lastname, "employee", :phone, :email, :password)');
+  $stmt = $conn->prepare('INSERT INTO users (firstname, lastname, privilege, phone, email, password, approved)
+    VALUES (:firstname, :lastname, "employee", :phone, :email, :password, 0)');
   $stmt->bindParam(':firstname',$first);
   $stmt->bindParam(':lastname',$last);
   $stmt->bindParam(':phone',$phone);
