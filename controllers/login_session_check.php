@@ -8,7 +8,7 @@ if(isset($_COOKIE['JAN-SESSION'])){
   $stmt->execute();
   $session = $stmt->fetch();
   if($session){
-    header("Location: ./index.php");
+    header("Location: ../index.php");
   }else{
     setcookie("JAN-SESSION",'', time() - 36000,'/');
   }

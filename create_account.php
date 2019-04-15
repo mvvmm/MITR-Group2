@@ -1,4 +1,3 @@
-<?php require_once 'controllers/session_check.php'?>
 <!doctype html>
 <html class="bg-light" lang="en">
 <head>

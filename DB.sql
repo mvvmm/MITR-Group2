@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS `users`(
 	`phone` varchar(10),
 	`email` varchar(50) NOT NULL,
 	`password` varchar(255) NOT NULL,
-	UNIQUE (email),
+	`approved` tinyint(1),
+	UNIQUE (`email`),
 	PRIMARY KEY (`uid`)
 );
 CREATE TABLE IF NOT EXISTS `projects`(
