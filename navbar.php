@@ -13,15 +13,15 @@ if(isset($_COOKIE['JAN-SESSION'])){
               aria-controls="navbarFixed" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
           </button>
-          <a class="navbar-brand" href="#">JANRenovation</a>
+          <a class="navbar-brand" href="index.php">JANRenovation</a>
 
           <div class="collapse navbar-collapse" id="navbarFixed">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                   <li class="nav-item">
-                      <a class="nav-link" href="#">Schedule <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="index.php">Schedule <span class="sr-only">(current)</span></a>
                   </li>
                   <li>
-                    <a class="nav-link" href="timesheet.php">Clock In/Out</a>
+                    <a class="nav-link" href="clock_IO.php">Clock In/Out</a>
                   </li>
                   <li>
                     <a class="nav-link" href="edit_account.php">Edit Account</a>

@@ -7,7 +7,7 @@ if (isset($_POST['dateTime']) && isset($_POST['projectAddress'])){
 
   // Make sure user entered an actually date in the format we want.
   if ($date == false){
-    echo "<script type='text/javascript'>alert('The date and time you enetered isn't the correct format. Try again using the calendar dropdown.');
+    echo "<script type='text/javascript'>alert('The date and time you entered isn't the correct format. Try again using the calendar dropdown.');
     window.location.replace(\" ../clock_IO.php \");
     </script>";
   }
