@@ -49,4 +49,16 @@ ul{
   background: green;
   color: white;
 }
+.col-md-3{
+  flex: 0 0 20.0%;
+  max-width:100%;
+  margin-top: 10px;
 
+}
+.sub-container{
+  margin-top: 50px;
+}
+.row{
+  margin-right: 10px;
+  margin-left:10px;
+}
