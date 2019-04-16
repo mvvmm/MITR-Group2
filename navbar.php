@@ -20,8 +20,8 @@ if(isset($_COOKIE['JAN-SESSION'])){
                   <li class="nav-item">
                       <a class="nav-link" href="#">Schedule <span class="sr-only">(current)</span></a>
                   </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">Upload Photo</a>
+                  <li>
+                    <a class="nav-link" href="timesheet.php">Clock In/Out</a>
                   </li>
                   <li>
                     <a class="nav-link" href="edit_account.php">Edit Account</a>
@@ -39,8 +39,6 @@ if(isset($_COOKIE['JAN-SESSION'])){
   if ($privilege == 'scheduler')
   {
       echo '
-      <script src="js/jquery.js"></script>
-      <script type="text/javascript" src="js/bootstrap.min.js"></script>
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarFixed"
               aria-controls="navbarFixed" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,19 +48,14 @@ if(isset($_COOKIE['JAN-SESSION'])){
 
           <div class="collapse navbar-collapse" id="navbarFixed">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Tools
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item" href="#">Overview</a>
-                          <a class="dropdown-item" href="#">Assign</a>
-                          <a class="dropdown-item" href="#">View Pictures</a>
-                          <a class="dropdown-item" href="edit_account.php">Edit Account</a>
-                      </div>
-                  </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="#">Upload Photo</a>
+                      <a class="nav-link" href="#">Schedule <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="timesheet.php">Clock In/Out</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="edit_account.php">Edit Account</a>
                   </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
@@ -95,7 +88,6 @@ if(isset($_COOKIE['JAN-SESSION'])){
                       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                           <a class="dropdown-item" href="#">Overview</a>
                           <a class="dropdown-item" href="#">Assign</a>
-                          <a class="dropdown-item" href="#">View Pictures</a>
                           <a class="dropdown-item" href="#">Manage Schedulers</a>
                           <a class="dropdown-item" href="edit_account.php">Edit Account</a>
                       </div>
