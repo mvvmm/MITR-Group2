@@ -5,46 +5,15 @@
     <title>Worker Portal</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <?php include "style.php";?>
 
 </head>
 
 <body>
-
-
+  <div class="p-5">
+    <?php include 'navbar.php';?>
+  </div>
     <div class="container">
-        <!-- NAV BAR -->
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                        aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Brand</a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#">Schedule</a></li>
-                        <li><a href="timesheet.php">Clock In/Out</a></li>
-                        <li><a href="#">Upload Photo</a></li>
-                    </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
         <div class="sub-container" style="padding-left:15px; padding-right:15px;">
             <div class="row" style="padding-bottom: 15px;">
                 <div class="col-sm-12">
@@ -61,15 +30,15 @@
             $dbconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $starttime = "";
             $endtime = "";
-            
+
 
             // var_dump(document);
             $query = $dbconn->prepare('
                 SELECT t.uid,t.pid,t.starttime,t.endtime,p.address,p.borough
                 FROM `timesheet` t,
                 `projects` p
-                WHERE 
-                t.uid=3 
+                WHERE
+                t.uid=3
                 and p.pid = t.pid
                 ORDER BY starttime,endtime;'
                 );
@@ -88,7 +57,7 @@
             }
             // var_dump($result);
             echo "
-            <script> 
+            <script>
             $(document).ready(function(){
                 var arr = ".json_encode($result).";
                 console.log(arr);
@@ -101,43 +70,43 @@
                     var dayofweek = days[startdate.getDay()];
                     var starttime = startdate.toLocaleTimeString('en-US');
                     var endtime = enddate.toLocaleTimeString('en-US');
-                    
+
                     //If we are including multiple job sites in a day. CreateElement('div') to block off info for one
 
-                    var node = document.createElement('li'); 
-                    var textnode = document.createTextNode(dayofweek);  
+                    var node = document.createElement('li');
+                    var textnode = document.createTextNode(dayofweek);
                     node.appendChild(textnode);
                     document.getElementById(dayofweek).appendChild(node);
 
-                    var node = document.createElement('li'); 
-                    var textnode = document.createTextNode(starttime);  
+                    var node = document.createElement('li');
+                    var textnode = document.createTextNode(starttime);
                     node.appendChild(textnode);
                     document.getElementById(dayofweek).appendChild(node);
 
-                    var node = document.createElement('li'); 
-                    var textnode = document.createTextNode(endtime);  
+                    var node = document.createElement('li');
+                    var textnode = document.createTextNode(endtime);
                     node.appendChild(textnode);
                     document.getElementById(dayofweek).appendChild(node);
 
-                    var node = document.createElement('li'); 
-                    var textnode = document.createTextNode(address);  
+                    var node = document.createElement('li');
+                    var textnode = document.createTextNode(address);
                     node.appendChild(textnode);
                     document.getElementById(dayofweek).appendChild(node);
 
-                    var node = document.createElement('li'); 
-                    var textnode = document.createTextNode(borough);  
+                    var node = document.createElement('li');
+                    var textnode = document.createTextNode(borough);
                     node.appendChild(textnode);
                     document.getElementById(dayofweek).appendChild(node);
                 }
                 console.log(document);
             })
-            
+
             </script>"
 
             ?>
-            
-            
-            
+
+
+
             <table class="table">
                 <thead>
                     <tr>
@@ -183,8 +152,8 @@
                     </tr>
                 </tbody>
             </table>
-            
-            
+
+
         </div>
     </div>
 

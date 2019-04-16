@@ -35,7 +35,5 @@ require_once "controllers/admin_check.php";
       </div>
     </div>
   </div>
-  <script src="js/jquery.js"></script>
-  <script src="js/account_approval.js"></script>
 </body>
 </html>

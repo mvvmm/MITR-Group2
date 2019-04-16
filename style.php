@@ -1,5 +1,4 @@
-<!-- All style links that are consistent among the whole site go in here -->
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/bootstrap-grid.css">
-<link rel="stylesheet" href="css/bootstrap-reboot.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://rawgit.com/tempusdominus/bootstrap-4/master/build/css/tempusdominus-bootstrap-4.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
 <link rel="stylesheet" href="css/style.css">
