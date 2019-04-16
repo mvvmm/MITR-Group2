@@ -65,8 +65,9 @@
                 if($user_type == "admin"){
                   echo "  <div class='form-group'>";
                   echo "      <select class='form-control' id='privilege' name='privilege'>";
-                  echo "        <option selected>Privilege</option>";
+                  echo "        <option selected disabled>Privilege</option>";
                   echo "        <option value='employee'>Employee</option>";
+                  echo "        <option value='scheduler'>Scheduler</option>";
                   echo "        <option value='admin'>Admin</option>";
                   echo "      </select>";
                   echo "   </div>";
@@ -82,7 +83,7 @@
         </div>
       </div>
     </div>
-    <script src="js/jquery.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/edit_account.js"></script>
   </body>
 </html>

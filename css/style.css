@@ -26,6 +26,10 @@ input[type=number] {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.24);
 }
 
+ul{
+  list-style-type: none;
+}
+
 .notification-bubble {
   color: white;
   text-decoration: none;
@@ -45,3 +49,4 @@ input[type=number] {
   background: green;
   color: white;
 }
+

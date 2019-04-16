@@ -6,8 +6,7 @@
   <title>JANRenovation</title>
 </head>
 <body>
-<h1>Index</h1>
 <?php include 'navbar.php'; ?>
-
+<h1>Index</h1>
 </body>
 </html>

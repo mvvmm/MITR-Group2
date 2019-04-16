@@ -1,4 +1,5 @@
 <?php
+require_once 'db_connector.php';
 function getPrivilege(){
     if(isset($_COOKIE['JAN-SESSION'])){
         $sessionID = $_COOKIE['JAN-SESSION'];
@@ -46,6 +47,25 @@ function getQueuedAccountsCount(){
     return '';
   }else{
     return $count;
+  }
+}
+
+function generateUsersActiveProjects(){
+  $uid = getUID();
+  $conn = dbConnect();
+  $stmt = $conn->prepare('SELECT pid FROM relations WHERE uid = :uid');
+  $stmt->bindParam(':uid', $uid);
+  $stmt->execute();
+  $pids = $stmt->fetchall();
+  foreach($pids as $pid){
+    $stmt = $conn->prepare('SELECT address FROM projects WHERE pid = :pid AND active = 1');
+    $stmt->bindParam(':pid',$pid["pid"]);
+    $stmt->execute();
+    $address = $stmt->fetchColumn();
+    if($address){
+      $option = "<option value='" . $address . "'>" . $address . "</option>";
+      echo $option;
+    }
   }
 }
 ?>
