@@ -46,7 +46,7 @@
             </div>
 
             <div class="text-center">
-              <button class="btn btn-primary btn-clock text-uppercase" type="submit" name="submit">Create</button>
+              <button class="btn btn-dark btn-clock text-uppercase" type="submit" name="submit">Create</button>
             </div>
 
           </form>
