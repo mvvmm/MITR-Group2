@@ -11,6 +11,7 @@ CREATE TABLE `projects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `relations` (
+  `rid` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
   `pid` int(11) NOT NULL,
   `date` datetime DEFAULT NULL
@@ -41,11 +42,13 @@ CREATE TABLE `users` (
   `approved` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
 ALTER TABLE `projects`
   ADD PRIMARY KEY (`pid`),
   ADD UNIQUE KEY `address` (`address`);
 
 ALTER TABLE `relations`
+  ADD PRIMARY KEY (`rid`),
   ADD KEY `uid` (`uid`),
   ADD KEY `pid` (`pid`);
 
@@ -64,13 +67,16 @@ ALTER TABLE `users`
 
 
 ALTER TABLE `projects`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `relations`
+  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `timesheet`
-  MODIFY `tsid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `tsid` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT;
 
 
 ALTER TABLE `relations`

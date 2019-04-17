@@ -68,4 +68,25 @@ function generateUsersActiveProjects(){
     }
   }
 }
+
+function generateUserSchedule(){
+  $uid = getUID();
+  $conn = dbConnect();
+  $stmt = $conn->prepare('SELECT r.date,p.address,p.borough FROM relations r, projects p WHERE r.uid = :uid AND r.pid = p.pid AND p.active = 1');
+  $stmt->bindParam(':uid', $uid);
+  $stmt->execute();
+  $result = $stmt->fetchAll();
+  foreach($result as $value){
+    $dayofweek = date("l",strtotime($value["date"]));
+    if($dayofweek != 'Saturday' && $dayofweek != 'Sunday'){
+      $row = "<tr><td scope='row'>".$value['address'].", ".$value['borough']."</td></tr>";?>
+      <script type="text/javascript">
+        var day = "#" + "<?php echo $dayofweek ?>";
+        var row = "<?php echo $row ?>";
+        $(day).append(row);
+      </script>
+      <?php
+    }
+  }
+}
 ?>
