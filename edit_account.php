@@ -23,7 +23,7 @@
                   <input type="text" id="lookup-email" class="form-control" name="email" placeholder="E-mail" required/>
                 </div>
                 <div class="text-center">
-                  <button class="btn btn-primary btn-clock text-uppercase" type="submit" name="Submit">Lookup</button>
+                  <button class="btn btn-dark btn-clock text-uppercase" type="submit" name="Submit">Lookup</button>
                 </div>
               </form>
             </div>
@@ -75,7 +75,7 @@
               ?>
 
                <div class="form-group text-center">
-                  <button class="btn btn-primary btn-clock text-uppercase" type="submit" name="submit">Update</button>
+                  <button class="btn btn-dark btn-clock text-uppercase" type="submit" name="submit">Update</button>
                 </div>
               </form>
             </div>
