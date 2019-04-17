@@ -22,7 +22,7 @@
     <div class="row">
 
       <div class="col-md-3">
-        <table class="table table-bordered" id="Monday">
+        <table class="table table-bordered">
           <thead class='thead-dark'>
             <tr><th scope="col-sm-1">Monday</th></tr>
           </thead>
@@ -31,7 +31,7 @@
       </div>
 
       <div class="col-md-3">
-        <table class="table table-bordered" id="Tuesday">
+        <table class="table table-bordered">
           <thead class='thead-dark'>
             <tr><th scope="col-sm-1">Tuesday</th></tr>
           </thead>
@@ -40,7 +40,7 @@
       </div>
 
       <div class="col-md-3">
-        <table class="table table-bordered" id="Wednesday">
+        <table class="table table-bordered">
           <thead class='thead-dark'>
             <tr><th scope="col-sm-1">Wednesday</th></tr>
           </thead>
@@ -49,7 +49,7 @@
       </div>
 
       <div class="col-md-3">
-        <table class="table table-bordered" id="Thursday">
+        <table class="table table-bordered">
           <thead class='thead-dark'>
             <tr><th scope="col-sm-1">Thursday</th></tr>
           </thead>
@@ -58,7 +58,7 @@
       </div>
 
       <div class="col-md-3">
-        <table class="table table-bordered" id="Friday">
+        <table class="table table-bordered">
           <thead class='thead-dark'>
             <tr><th scope="col-sm-1">Friday</th></tr>
           </thead>
