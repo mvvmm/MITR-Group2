@@ -69,6 +69,16 @@
 
 
     <?php generateUserSchedule();
+  } elseif($user_type == "scheduler"){?>
+    <br><br>
+    <h1>Schedualer Test</h1>
+    <?php
+  } elseif($user_type == "admin"){?>
+    <br><br>
+    <h1>Admin Test</h1>
+    <?php
+  } else {
+    header("Location: login.php");
   }?>
 </body>
 </html>
