@@ -5,8 +5,8 @@ CREATE TABLE `projects` (
   `pid` int(11) NOT NULL,
   `address` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `borough` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `start` datetime DEFAULT NULL,
-  `end` datetime DEFAULT NULL,
+  `starttime` datetime DEFAULT NULL,
+  `endtime` datetime DEFAULT NULL,
   `active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
