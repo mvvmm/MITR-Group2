@@ -11,7 +11,7 @@
   </div>
 <div class="container">
   <div class="row">
-    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto top-buffer">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
       <div class="card shadow-lg my-5">
         <div class="card-body">
           <h1 class="card-title text-center">Create Account</h1>
