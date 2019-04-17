@@ -4,12 +4,11 @@
   <?php include 'style.php';?>
   <meta charset="utf-8">
   <title>Create Account</title>
-  <style>
-    .top-buffer { margin-top: 100px;}
-  </style>
 </head>
 <body class="bg-light">
-<?php include 'navbar.php';?>
+  <div class="p-5">
+    <?php include 'navbar.php';?>
+  </div>
 <div class="container">
   <div class="row">
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto top-buffer">
