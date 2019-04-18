@@ -89,4 +89,26 @@ function generateUserSchedule(){
     }
   }
 }
+
+function generateUsersByPrivilege($privilege){
+  $conn = dbConnect();
+  $stmt = $conn->prepare('SELECT * FROM users WHERE privilege=:privilege');
+  $stmt->bindParam(':privilege',$privilege);
+  $stmt->execute();
+  $result = $stmt->fetchAll();
+  foreach($result as $user) {
+      echo("<option value='" . $user["uid"] . "'>" . $user["lastname"] . ", " . $user["firstname"] . "</option>");
+  }
+}
+
+function generateActiveProjects(){
+  $conn = dbConnect();
+  $stmt = $conn->prepare('SELECT * FROM projects WHERE active=1');
+  $stmt->execute();
+  $result = $stmt->fetchAll();
+  foreach($result as $project) {
+      echo("<option value='" . $project["pid"] . "'>" . $project["address"] . "</option>");
+  }
+}
+
 ?>
