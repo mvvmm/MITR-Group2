@@ -6,6 +6,9 @@
   <title>Create Account</title>
 </head>
 <body class="bg-light">
+  <div class="p-5">
+    <?php include 'navbar.php';?>
+  </div>
 <div class="container">
   <div class="row">
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
