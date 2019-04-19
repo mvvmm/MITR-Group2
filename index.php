@@ -79,37 +79,72 @@
     $ManhattenColor    = "#f46666"; // red
     $QueensColor       = "#aaf26f"; // green
     $StatenIslandColor = "#e2aaff"; // purple 
+    
+    $BronxTextColor        = "#2c5b66"; // dark blue
+    $BrooklynTextColor     = "#7f6e2a"; // dark yellow
+    $ManhattenTextColor    = "#681f1f"; // dark red
+    $QueensTextColor       = "#3b5e1f"; // dark green
+    $StatenTextIslandColor = "#4b3159"; // dark purple 
     ?>
 
     <!-- build legend -->
     <div class="container"> 
-      <table class="table text-center table-bordered table-fluid">
-          <thead class="thead-dark">
-            <tr>
-              <th style="width: 20%">Bronx</th>    
-              <th style="width: 20%">Brooklyn</th>         
-              <th style="width: 20%">Manhattan</th>        
-              <th style="width: 20%">Queens</th>
-              <th style="width: 20%">Staten Island</th>
-            </tr>
-          </thead>
-          <tbody> 
+      <table class="table text-center table-fluid">
+          <thead class="thead-dark font-weight-bold">
             <tr>
               <?php 
                 echo('
-                  <td style="background-color:'.$BronxColor.'; height: 45px;"></td>
-                  <td style="background-color:'.$BrooklynColor.'; height: 45px;"></td>
-                  <td style="background-color:'.$ManhattenColor.'; height: 45px;"></td>
-                  <td style="background-color:'.$QueensColor.'; height: 45px;"></td>
-                  <td style="background-color:'.$StatenIslandColor.'; height: 45px;"></td>
+                <td style="width: 20%; background-color:'.$BronxColor.'; color:'.$BronxTextColor.';">Bronx</td>    
+                <td style="width: 20%; background-color:'.$BrooklynColor.'; color:'.$BrooklynTextColor.';">Brooklyn</td>         
+                <td style="width: 20%; background-color:'.$ManhattenColor.'; color:'.$ManhattenTextColor.';"; >Manhattan</td>        
+                <td style="width: 20%; background-color:'.$QueensColor.'; color:'.$QueensTextColor.';">Queens</td>
+                <td style="width: 20%; background-color:'.$StatenIslandColor.'; color:'.$StatenTextIslandColor.';">Staten Island</td>
                 ');
               ?>
             </tr>
-          </tbody>
+          </thead>
       </table>
 
 
     <?php
+    class Employee {
+      private $uid;
+      private $fname;
+      private $lname;
+      public $projects; // $projects({date} => [proj_1, proj_2, ...])
+
+      public function __construct($uid, $fname, $lname) {
+        $this->uid = $uid;
+        $this->fname = $fname;
+        $this->lname = $lname;
+        $this->projects = array();
+      }
+  
+      public function getProjects() {
+        return $this->projects;
+      }
+
+      public function getName() {
+        return $this->fname;
+      }
+
+      public function addProject($date, $project) { 
+        $shared = False;
+        // check if project shares date
+        foreach($this->projects as $curDateProj) {
+          if ($date == $curDateProj) {
+            array_push($curDateProj[$date], $project);
+            $shared = True;
+          }
+        }
+        if (!$shared) {
+          $projEntry = array($date=>[$project]);
+          array_push($this->projects, $projEntry);
+        }
+     
+      }
+    }
+
     // function to make array of weekdays from array or all days
     function noWeekends($daysArray) {
       
@@ -176,11 +211,26 @@
               <table class="table table-bordered">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Employee</th> ');
+                        <th rowspan="2">Employee</th> ');
 
-    // build headers for next 5 days                    
+    // build headers for next 5 days
+    // row 1 - day of week                    
     for ($x = 0; $x < 5; $x++) {
-      echo('<th>'.$next5WeekDays[$x].'</th>');
+      $nameOfDay = date('l', strtotime($next5WeekDays[$x]));
+      echo(
+        '<th>'.$nameOfDay.'</th>
+      ');
+    }
+    echo('  </tr>
+              <tr>
+          
+    ');
+    // row 2 - exact date mm-dd              
+    for ($x = 0; $x < 5; $x++) {
+      $nameOfDay = date('D', strtotime($next5WeekDays[$x]));
+      echo(
+        '<th>'.substr($next5WeekDays[$x], 5).'</th>
+      ');
     }
 
     echo('
@@ -191,9 +241,15 @@
 
     // loop through all employees in database
     if (mysqli_num_rows($allEmployees) > 0) {
+      $employeeProjectMap = [];
+
         // for each user
         while($employee = mysqli_fetch_assoc($allEmployees)) {
-
+            $uid = $employee["uid"];            
+            $fname = $employee["firstname"];
+            $lname = $employee["lastname"];
+            $thisEmployee = new Employee($uid, $fname, $lname);
+           
             // add row with name
             echo('
                 <tr>
@@ -201,7 +257,7 @@
             ');
 
             // get all the project ids and dates of those projects for the user
-            $uid = $employee["uid"];
+           
             $sqlGetRelations = "SELECT * FROM relations WHERE uid=$uid";
 
             // loop through 5 days
@@ -210,6 +266,7 @@
 
                 // Loop through all the relations for that user
                 $printed = False;
+                $curEmployeeProj = [];
                 while($relation = mysqli_fetch_assoc($allRelations)) {
                   
                   // get this relation project from project table
@@ -217,9 +274,13 @@
                   $sqlGetProject = "SELECT * FROM projects WHERE pid=$pid";
                   $projectData = mysqli_query($conn, $sqlGetProject);
                   $project = mysqli_fetch_assoc($projectData);
+                  
+                  $thisEmployee->addProject($relation["date"], $project); // add prject to this employee object
 
-                  $currentDay = substr($relation["date"], 0, 10);                    
+                  $currentDay = substr($relation["date"], 0, 10);   
+                  // if day in next 5 weekdays                 
                   if ($currentDay == $next5WeekDays[$x]) {
+
                       $printed = True;
                       $buroughColor = whatColor($project["borough"]);
                       echo(
@@ -233,10 +294,9 @@
                     echo('<td></td>');
                 }
             }
-
-
+            //print_r($thisEmployee->projects); // debug
             echo("<tr></tr>");
-
+            array_push($employeeProjectMap, $thisEmployee);
         }
     } else {
         echo "0 results";
