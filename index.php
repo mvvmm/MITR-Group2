@@ -74,6 +74,23 @@
     <?php generateUserSchedule();
   } elseif($user_type == "scheduler"){
     
+    // function to make array of weekdays from array or all days
+    function noWeekends($daysArray) {
+      
+      $newDaysArray = [];
+
+      foreach ($daysArray as $x => $date) {
+        $weekDay = date('w', strtotime($date));
+       
+        // check if weekday and add to new array
+        if($weekDay != 0 && $weekDay != 6) {
+          array_push($newDaysArray, $daysArray[$x]);
+        }
+      }
+
+      return $newDaysArray;
+    }
+
     // build database connection
     $database = parse_ini_file("controllers/db_config.ini");
     $host = $database['host'];
@@ -86,64 +103,72 @@
     date_default_timezone_set('US/Eastern');
     $date = date('Y-m-d h:i:s a', time());
 
-    // build dates for next 5 days
+    // build dates for next 7 days
     $day0 = date('Y-m-d');
     $day1 = date('Y-m-d', strtotime("+1 days"));
     $day2 = date('Y-m-d', strtotime("+2 days"));
     $day3 = date('Y-m-d', strtotime("+3 days"));
     $day4 = date('Y-m-d', strtotime("+4 days"));
-    $daysArr = array($day0, $day1, $day2, $day3, $day4);
+    $day5 = date('Y-m-d', strtotime("+5 days"));
+    $day6 = date('Y-m-d', strtotime("+6 days"));
+    $next7Days = array($day0, $day1, $day2, $day3, $day4, $day5, $day6);
+    $next5WeekDays = noWeekends($next7Days);
 
     // build SQL query to grab all employees
-    $sql = "SELECT * FROM users WHERE privilege='employee'";
-    $result = mysqli_query($conn, $sql);
+    $sqlGetEmployees = "SELECT * FROM users WHERE privilege='employee'";
+    $allEmployees = mysqli_query($conn, $sqlGetEmployees);
 
     // html build table header
     echo(' <div class="container"> 
               <table class="table table-bordered">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Employee</th>
-                        <th>'.$day0.'</th>
-                        <th>'.$day1.'</th>
-                        <th>'.$day2.'</th>
-                        <th>'.$day3.'</th>
-                        <th>'.$day4.'</th>
+                        <th>Employee</th> ');
+
+    // build headers for next 5 days                    
+    for ($x = 0; $x < 5; $x++) {
+      echo('<th>'.$next5WeekDays[$x].'</th>');
+    }
+
+    echo('
                     </tr>
-                </thead>
-                <tbody>
+                  </thead>
+                <tbody>    
     ');
 
     // loop through all employees in database
-    if (mysqli_num_rows($result) > 0) {
+    if (mysqli_num_rows($allEmployees) > 0) {
         // for each user
-        while($row = mysqli_fetch_assoc($result)) {
+        while($employee = mysqli_fetch_assoc($allEmployees)) {
 
             // add row with name
             echo('
                 <tr>
-                    <td>'.$row["firstname"] .' '. $row["lastname"].'</td>
+                    <td>'.$employee["firstname"] .' '. $employee["lastname"].'</td>
             ');
 
             // get all the project ids and dates of those projects for the user
-            $uid = $row["uid"];
-            $sql2 = "SELECT * FROM relations WHERE uid=$uid";
+            $uid = $employee["uid"];
+            $sqlGetRelations = "SELECT * FROM relations WHERE uid=$uid";
 
             // loop through 5 days
             for ($x = 0; $x < 5; $x++) {
-                $result2 = mysqli_query($conn, $sql2);
+                $projectRelations = mysqli_query($conn, $sqlGetRelations);
 
                 // Loop through all the relations for that user
                 $printed = False;
-                while($row2 = mysqli_fetch_assoc($result2)) {
-                    if (substr($row2["date"], 0, 10) == $daysArr[$x]) {
-                        $printed = True;
-                        echo(
-                            '<td>'.$row2["date"].'</td>'
-                        );
-                        break;
-                    } 
+                while($project = mysqli_fetch_assoc($projectRelations)) {
+
+                  $currentDay = substr($project["date"], 0, 10);                    
+                  if ($currentDay == $next5WeekDays[$x]) {
+                      $printed = True;
+                      echo(
+                          '<td>'.$project["date"].'</td>'
+                      );
+                      break;
+                  } 
                 }
+                // print blank cell if no data
                 if ($printed == False) {
                     echo('<td></td>');
                 }
