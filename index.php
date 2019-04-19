@@ -91,6 +91,23 @@
       return $newDaysArray;
     }
 
+    // function used to determine cell fill color
+    function whatColor($borough) {
+      $color = "";
+      if ($borough == 'Manhattan') { 
+        $color = "#f46666"; 
+      } elseif ($borough == 'Bronx') {  
+        $color = "#80e5fc"; 
+      } elseif ($borough == 'Brooklyn') { 
+        $color = "#ffe270"; 
+      } elseif ($borough == 'Queens') { 
+        $color = "#aaf26f"; 
+      } elseif ($borough == 'Staten Island') { 
+        $color = "#e2aaff"; 
+      }
+      return $color;
+    }
+
     // build database connection
     $database = parse_ini_file("controllers/db_config.ini");
     $host = $database['host'];
@@ -168,8 +185,9 @@
                   $currentDay = substr($relation["date"], 0, 10);                    
                   if ($currentDay == $next5WeekDays[$x]) {
                       $printed = True;
+                      $buroughColor = whatColor($project["borough"]);
                       echo(
-                          '<td>'.$project["borough"].'</td>'
+                          '<td style="background-color:'.$buroughColor.';">'.$project["address"].'</td>'
                       );
                       break;
                   } 
