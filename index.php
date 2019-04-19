@@ -73,7 +73,43 @@
 
     <?php generateUserSchedule();
   } elseif($user_type == "scheduler"){
-    
+    // color constants
+    $BronxColor        = "#80e5fc"; // blue
+    $BrooklynColor     = "#ffe270"; // yellow
+    $ManhattenColor    = "#f46666"; // red
+    $QueensColor       = "#aaf26f"; // green
+    $StatenIslandColor = "#e2aaff"; // purple 
+    ?>
+
+    <!-- build legend -->
+    <div class="container"> 
+      <table class="table text-center table-bordered table-fluid">
+          <thead class="thead-dark">
+            <tr>
+              <th style="width: 20%">Bronx</th>    
+              <th style="width: 20%">Brooklyn</th>         
+              <th style="width: 20%">Manhattan</th>        
+              <th style="width: 20%">Queens</th>
+              <th style="width: 20%">Staten Island</th>
+            </tr>
+          </thead>
+          <tbody> 
+            <tr>
+              <?php 
+                echo('
+                  <td style="background-color:'.$BronxColor.'; height: 45px;"></td>
+                  <td style="background-color:'.$BrooklynColor.'; height: 45px;"></td>
+                  <td style="background-color:'.$ManhattenColor.'; height: 45px;"></td>
+                  <td style="background-color:'.$QueensColor.'; height: 45px;"></td>
+                  <td style="background-color:'.$StatenIslandColor.'; height: 45px;"></td>
+                ');
+              ?>
+            </tr>
+          </tbody>
+      </table>
+
+
+    <?php
     // function to make array of weekdays from array or all days
     function noWeekends($daysArray) {
       
@@ -136,7 +172,7 @@
     $allEmployees = mysqli_query($conn, $sqlGetEmployees);
 
     // html build table header
-    echo(' <div class="container"> 
+    echo(' 
               <table class="table table-bordered">
                 <thead class="thead-dark">
                     <tr>
