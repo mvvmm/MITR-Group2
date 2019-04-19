@@ -153,17 +153,23 @@
 
             // loop through 5 days
             for ($x = 0; $x < 5; $x++) {
-                $projectRelations = mysqli_query($conn, $sqlGetRelations);
+                $allRelations = mysqli_query($conn, $sqlGetRelations);
 
                 // Loop through all the relations for that user
                 $printed = False;
-                while($project = mysqli_fetch_assoc($projectRelations)) {
+                while($relation = mysqli_fetch_assoc($allRelations)) {
+                  
+                  // get this relation project from project table
+                  $pid = $relation["pid"];
+                  $sqlGetProject = "SELECT * FROM projects WHERE pid=$pid";
+                  $projectData = mysqli_query($conn, $sqlGetProject);
+                  $project = mysqli_fetch_assoc($projectData);
 
-                  $currentDay = substr($project["date"], 0, 10);                    
+                  $currentDay = substr($relation["date"], 0, 10);                    
                   if ($currentDay == $next5WeekDays[$x]) {
                       $printed = True;
                       echo(
-                          '<td>'.$project["date"].'</td>'
+                          '<td>'.$project["borough"].'</td>'
                       );
                       break;
                   } 
