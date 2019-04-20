@@ -1,6 +1,7 @@
 <?PHP
 require_once 'controllers/db_connector.php';
 require_once 'controllers/functions.php';
+require_once 'script.php';
 //If the user is logged in, get their privilege and show them the corresponding navbar.
 if(isset($_COOKIE['JAN-SESSION'])){
   $privilege  = getPrivilege();
@@ -51,6 +52,9 @@ if(isset($_COOKIE['JAN-SESSION'])){
                   <li>
                     <a class="nav-link" href="edit_account.php">Edit Account</a>
                   </li>
+                  <li>
+                    <a class="nav-link" href="end_project.php">End Project</a>
+                  </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                   <li><a class="nav-link" href="controllers/logout_controller.php">Logout</a></li>
@@ -83,6 +87,7 @@ if(isset($_COOKIE['JAN-SESSION'])){
                           <a class="dropdown-item" href="create_project.php">Create Project</a>
                           <a class="dropdown-item" href="assign_job.php">Assign Jobs</a>
                           <a class="dropdown-item" href="edit_account.php">Edit Accounts</a>
+                          <a class="dropdown-item" href="end_project.php">End Project</a>
                       </div>
                   </li>
                   <li>
