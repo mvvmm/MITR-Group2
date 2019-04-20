@@ -16,7 +16,7 @@ require_once "controllers/admin_check.php";
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <table class="table">
+        <table class="table table-striped table-bordered">
           <form method="post" action="controllers/account_approval_controller.php">
             <thead class="thead-dark">
               <tr>

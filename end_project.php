@@ -23,7 +23,7 @@ require_once "controllers/admin_check.php";
   <div class="container p-0">
     <div class="row">
       <div class="col-lg-12">
-        <table class="table">
+        <table class="table table-striped table-bordered">
           <form method="post" action="controllers/end_project_controller.php">
             <thead class="thead-dark">
               <tr>
