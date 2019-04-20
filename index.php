@@ -257,7 +257,6 @@
             ');
 
             // get all the project ids and dates of those projects for the user
-           
             $sqlGetRelations = "SELECT * FROM relations WHERE uid=$uid";
 
             // loop through 5 days
@@ -274,18 +273,14 @@
                   $sqlGetProject = "SELECT * FROM projects WHERE pid=$pid";
                   $projectData = mysqli_query($conn, $sqlGetProject);
                   $project = mysqli_fetch_assoc($projectData);
-                  
-                  $thisEmployee->addProject($relation["date"], $project); // add prject to this employee object
 
                   $currentDay = substr($relation["date"], 0, 10);   
                   // if day in next 5 weekdays                 
                   if ($currentDay == $next5WeekDays[$x]) {
-
+                      $thisEmployee->addProject($relation["date"], $project); // add prject to this employee object
                       $printed = True;
-                      $buroughColor = whatColor($project["borough"]);
-                      echo(
-                          '<td style="background-color:'.$buroughColor.';">'.$project["address"].'</td>'
-                      );
+                      //$buroughColor = whatColor($project["borough"]);
+                      //echo('<td style="background-color:'.$buroughColor.';">'.$project["address"].'</td>');
                       break;
                   } 
                 }
@@ -300,7 +295,17 @@
         }
     } else {
         echo "0 results";
-    }?>
+    }
+    
+    foreach($employeeProjectMap as $employeeObj) {
+      $employeeProject = $employeeObj->getProjects();
+      foreach($employeeProject as $curProject) {
+        print_r($employeeObj->getName().' ');
+        var_dump($curProject);
+      }
+    }
+    
+    ?>
 
     </body>
 
