@@ -5,7 +5,7 @@ $stmt = $conn->prepare('SELECT * FROM users WHERE approved = 0');
 $stmt->execute();
 $count = 1;
 while($row = $stmt->fetch()){
-  echo "<tr>";
+  echo "<tr class='text-center'>";
   echo   "<th scope='row'>" . $count . "</th>";
   echo   "<td>" . $row['firstname'] . "</td>";
   echo   "<td>" . $row['lastname'] . "</td>";

@@ -6,6 +6,7 @@ require_once "controllers/admin_check.php";
 <html class='bg-light'>
 <head>
   <?php include 'style.php'?>
+  <?php include 'script.php'?>
   <meta charset="utf-8">
   <title>Account Approval</title>
 </head>
@@ -15,11 +16,18 @@ require_once "controllers/admin_check.php";
   </div>
   <div class="container">
     <div class="row">
+      <div class="col-md-12">
+        <h1 class="pb-2 text-center">Approve Accounts</h1>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
       <div class="col-lg-12">
-        <table class="table table-striped table-bordered">
+        <table id="approveTable" class="table table-striped table-bordered">
           <form method="post" action="controllers/account_approval_controller.php">
             <thead class="thead-dark">
-              <tr>
+              <tr class='text-center'>
                 <th scope="col">#</th>
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
@@ -35,5 +43,6 @@ require_once "controllers/admin_check.php";
       </div>
     </div>
   </div>
+  <script src="js/account_approval.js"></script>
 </body>
 </html>

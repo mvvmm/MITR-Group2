@@ -7,7 +7,7 @@ $count = 1;
 while($row = $stmt->fetch()){
   $starttimein = strtotime($row['starttime']);
   $starttimeout = date('F n, Y',$starttimein);
-  echo "<tr>";
+  echo "<tr class='text-center'>";
   echo   "<th scope='row'>" . $count . "</th>";
   echo   "<td>" . $row['address'] . "</td>";
   echo   "<td>" . $row['borough'] . "</td>";
