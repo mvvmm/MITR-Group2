@@ -1,3 +1,4 @@
+<?php require_once 'controllers/session_check.php';?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +46,7 @@
             </div>
         </nav>
        <h1>Your Timesheet</h1>
-       
+
       <?php
         $server = 'localhost';
         $user = 'root';
@@ -78,27 +79,27 @@
               'INSERT INTO `timesheet` (uid,pid,starttime,endtime)
               VALUES (:uid,:pid,:starttime,:endtime)'
             );
-            
+
             $ins->bindParam(':uid',$uid);
             $ins->bindParam(':pid',$pid);
             $ins->bindParam(':starttime',$starttimedate);
             $ins->bindParam(':endtime',$endtimedate);
-            
+
             $ins->execute();
-            
+
 
             $address = "";
             $borough = "";
-            
-            
+
+
             $s_time = "";
             $e_time = "";
-            
+
             $query = $dbconn->prepare('
                 SELECT t.uid,t.pid,t.starttime,t.endtime,p.address,p.borough
                 FROM `timesheet` t,
                 `projects` p
-                WHERE 
+                WHERE
                 t.uid='.$uid.'
                 and p.pid = t.pid
                 ORDER BY starttime,endtime;'
@@ -107,7 +108,7 @@
             $result = $query->fetchAll();
             // var_dump($result);
             // printf($result[0]["endtime"]);
-            
+
             foreach($result as $value){
                 // printf($value["date"]);
                 $day = date("d",strtotime($value["starttime"]));
@@ -116,7 +117,7 @@
                 $dayofweek = date("l",strtotime($value["starttime"]));
                 $address = $value["address"];
                 $borough = $value["borough"];
-                
+
                 echo("<li><h3>Date:</h3> $dayofweek, $day<h4>Start Time:</h4>$stime <h4>End Time:</h4>$etime <h4>Address:</h4>$address</li>");
                 // echo "<option value=\"".$value["pid"]."|".$value["date"] ."\">" . $dayofweek . "," . $day . " " . $value["address"] . "</option>";
             }
@@ -132,27 +133,27 @@
             //     <a class='btn btn-outline-success my-2 my-sm-0' href =\"profile.php?user=$value[username]\">View Profile</a>
             //     <a class='btn btn-outline-success my-2 my-sm-0' href ='offerrideresult.php?accept=true&rideid=".$value["rideid"]."&state=".$value["state"]."&city=".$value["city"]."&date=".$value["date"]."'>Accept Ride</a>
             //     </div>");
-              
+
             // }
 
 
 
             // var_dump($result);
             // echo("$result");
-            
+
           }
           catch(PDOException $e){
-            
+
             echo "<br>" . $e->getMessage();
           }
         }
         ?>
-  
 
-           
-            
-            
-        
+
+
+
+
+
     </div>
 
 </body>

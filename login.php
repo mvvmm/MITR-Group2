@@ -1,4 +1,4 @@
-  <?php require_once 'controllers/login_session_check.php';?>
+<?php require_once 'controllers/login_session_check.php';?>
 <!doctype html>
 <html class="bg-light" lang="en">
 <head>
