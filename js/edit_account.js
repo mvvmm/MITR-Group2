@@ -16,7 +16,6 @@ $('#lookup').submit(function(e){
             }
             else{
                 var parsed = data.split(" ");
-                console.log(data);
                 document.getElementById('email').value=$('#lookup-email').val();
                 document.getElementById('first').value=parsed[0];
                 document.getElementById('last').value=parsed[1];

@@ -14,7 +14,7 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="col-md-7 mx-auto">
           <div class="card shadow-lg mt-5">
             <div class="card-body">
               <h1 class="card-title text-center">Account Lookup</h1>
@@ -34,7 +34,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="col-md-7 mx-auto">
           <div class="card shadow-lg my-3">
             <div class="card-body">
               <h1 class="card-title text-center">Update Information</h1>
@@ -83,7 +83,6 @@
         </div>
       </div>
     </div>
-    <script src="js/jquery.min.js"></script>
     <script src="js/edit_account.js"></script>
   </body>
 </html>
