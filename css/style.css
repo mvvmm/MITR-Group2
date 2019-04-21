@@ -31,7 +31,7 @@ ul{
 }
 
 .notification-bubble {
-  color: white;
+  color: #212529;
   text-decoration: none;
   position: relative;
   display: inline-block;
@@ -43,7 +43,6 @@ ul{
   height: 18px;
   position: absolute;
   top: -2px;
-  right: -5px;
   padding-right: 4px;
   border-radius: 50%;
   background: green;
@@ -61,4 +60,9 @@ ul{
 .row{
   margin-right: 10px;
   margin-left:10px;
+}
+
+.pagination > li.active > a, .pagination > li.active > span{
+  background-color:#212529 !important;
+  border-color: #212529 !important;
 }
