@@ -1,6 +1,7 @@
 <?php
 require_once "controllers/session_check.php";
 require_once "controllers/admin_check.php";
+require_once  "controllers/manager_check.php";
 ?>
 <!doctype html>
 <html class='bg-light'>
