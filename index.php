@@ -326,19 +326,57 @@
     } else {
         echo "0 results";
     }
-    
+
+    // loop through all employees
     foreach($employeeProjectMap as $employee) {
+      
       // add row with name
       $rowSpanVal = $employee->getMaxProjectsInOneDay();
-      
+      $projects = $employee->getProjects();
       echo('
               <tr>
                 <td rowspan="'.$rowSpanVal.'">'.$employee->getFirstName().' '. $employee->getLastName().'</td>
       ');
 
+      // loop though
+      for($i = 0; $i < $rowSpanVal; $i++) {
+        // start new now if one or more already complete
+        if ($i >= 1) {
+          echo('<tr>');
+        }
+        
+        // loop through next 5 days
+        foreach($next5WeekDays as $curTableDate) {
+          // cause php data storage sucks
+          foreach($projects as $projectDayContainer) {
+            // loop through all projects of current employee
+            foreach($projectDayContainer as $projectDate => $projectList) {
+              // check if projct on that day
+              if ($curTableDate == $projectDate) {
+                // output and delete first project associated with date
+                $buroughColor = whatColor($projectList[0]["borough"]);
+                echo('<td style="background-color:'.$buroughColor.';">'.$projectList[0]["address"].'</td>');
+                array_splice($projectList, 0, 1);
+                /*
+                foreach($projectList as $project) {
+                  $buroughColor = whatColor($project["borough"]);
+                  echo('<td style="background-color:'.$buroughColor.';">'.$project["address"].'</td>');
+
+                }
+                */
+              // if no project on that day make empty cell
+              } else {
+                echo('<td></td>');
+              }
+            }
+            
+          } 
+        }
+        echo('</tr>');
+      }
+
       /*
-      $projects = $employee->getProjects();
-      foreach($projects as $project) {
+      foreach($projects as $projectDate) {
         $buroughColor = whatColor($project["borough"]);
         echo('<td style="background-color:'.$buroughColor.';">'.$project["address"].'</td>');
         echo("<tr></tr>");        
