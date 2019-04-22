@@ -45,7 +45,10 @@ if(isset($_POST['email']) && isset($_POST['password'])){
   $stmt->bindParam(':email',$email);
   $stmt->bindParam(':password',$password);
   $stmt->execute();
-  header("Location: ../index.php");
+  echo "<script type='text/javascript'>
+            alert('Account created successfully. Please wait for an admin to approve your account.');
+            window.location.replace(\" ../index.php \");
+        </script>";
   exit();
 }else{
   die("ERROR");
