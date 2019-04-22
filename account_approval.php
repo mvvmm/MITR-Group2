@@ -24,8 +24,8 @@ require_once "controllers/admin_check.php";
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <table id="approveTable" class="table table-striped table-bordered">
-          <form method="post" action="controllers/account_approval_controller.php">
+        <form method="post" action="controllers/account_approval_controller.php">
+          <table id="approveTable" class="table table-striped table-bordered">
             <thead class="thead-dark">
               <tr class='text-center'>
                 <th scope="col">#</th>
@@ -39,7 +39,8 @@ require_once "controllers/admin_check.php";
             <tbody>
               <?php include_once 'controllers/account_approval_fill.php';?>
             </tbody>
-        </table>
+          </table>
+        </form>
       </div>
     </div>
   </div>

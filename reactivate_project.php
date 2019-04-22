@@ -25,8 +25,8 @@ require_once  "controllers/manager_check.php";
   <div class="container p-0">
     <div class="row">
       <div class="col-lg-12">
-        <table id="reactivateTable" class="table table-striped table-bordered">
-          <form method="post" action="controllers/reactivate_project_controller.php">
+        <form method="post" action="controllers/reactivate_project_controller.php">
+          <table id="reactivateTable" class="table table-striped table-bordered">
             <thead class="thead-dark">
               <tr class='text-center'>
                 <th scope="col">#</th>
@@ -39,7 +39,8 @@ require_once  "controllers/manager_check.php";
             <tbody>
               <?php include_once 'controllers/reactivate_project_fill.php';?>
             </tbody>
-        </table>
+          </table>
+        </form>
       </div>
     </div>
   </div>
