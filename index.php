@@ -1,6 +1,6 @@
 <?php require_once 'controllers/functions.php'?>
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <?php include 'style.php'?>
   <?php include 'script.php'?>
@@ -124,8 +124,16 @@
         return $this->projects;
       }
 
-      public function getName() {
+      public function getFirstName() {
         return $this->fname;
+      }
+
+      public function getLastName() {
+        return $this->lname;
+      }
+
+      public function getUID() {
+        return $this->uid;
       }
 
       public function addProject($date, $project) { 
@@ -240,22 +248,39 @@
     ');
 
     // loop through all employees in database
+    $employeeProjectMap = [];
     if (mysqli_num_rows($allEmployees) > 0) {
-      $employeeProjectMap = [];
 
-        // for each user
-        while($employee = mysqli_fetch_assoc($allEmployees)) {
-            $uid = $employee["uid"];            
-            $fname = $employee["firstname"];
-            $lname = $employee["lastname"];
-            $thisEmployee = new Employee($uid, $fname, $lname);
+        // for each employee
+        while($employee = mysqli_fetch_assoc($allEmployees)) {        
+            echo($employee["firstname"].'<br>');
+            // check if employee already in array
+            $flagIsIn = False;
+            $uid = $employee["uid"];  
+            foreach($employeeProjectMap as $curEmployee) {
+              echo($curEmployee->getUID().' = '.$uid.' => ');
+              if ($curEmployee->getUID() == $uid) {
+                $thisEmployee = $curEmployee;
+                $flagIsIn = True;
+                //echo($curEmployee->getUID().' = '.$uid);
+                break;
+              }
+            }
+            echo('<br><br>'); //debug
+            // make new if none exists
+            if (!$flagIsIn) {               
+              $fname = $employee["firstname"];
+              $lname = $employee["lastname"];
+              $thisEmployee = new Employee($uid, $fname, $lname);
+            } 
            
+            /*
             // add row with name
             echo('
                 <tr>
                     <td>'.$employee["firstname"] .' '. $employee["lastname"].'</td>
             ');
-
+            */
             // get all the project ids and dates of those projects for the user
             $sqlGetRelations = "SELECT * FROM relations WHERE uid=$uid";
 
@@ -286,23 +311,44 @@
                 }
                 // print blank cell if no data
                 if ($printed == False) {
-                    echo('<td></td>');
+                    //echo('<td></td>');
                 }
             }
             //print_r($thisEmployee->projects); // debug
-            echo("<tr></tr>");
+            //echo("<tr></tr>");
             array_push($employeeProjectMap, $thisEmployee);
         }
+        var_dump($employeeProjectMap);
     } else {
         echo "0 results";
     }
     
+    foreach($employeeProjectMap as $employee) {
+      // add row with name
+      echo('
+              <tr>
+                <td>'.$employee->getFirstName().' '. $employee->getLastName().'</td>
+      ');
+      $projects = $employee->getProjects();
+      foreach($projects as $project) {
+        
+      }
+      $buroughColor = whatColor($project["borough"]);
+      echo('<td style="background-color:'.$buroughColor.';">'.$project["address"].'</td>');
+      echo("<tr></tr>");
+    }
+/*
+    // debug
     foreach($employeeProjectMap as $employeeObj) {
       $employeeProject = $employeeObj->getProjects();
+      var_dump($employeeProject);
+      echo('<br><br>');
+      
       foreach($employeeProject as $curProject) {
         print_r($employeeObj->getName().' ');
         var_dump($curProject);
-      }
+        echo('<br><br>');
+      }*/
     }
     
     ?>
