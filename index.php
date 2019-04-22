@@ -111,7 +111,7 @@
       private $uid;
       private $fname;
       private $lname;
-      public $projects; // $projects({date} => [proj_1, proj_2, ...])
+      private $projects; // $projects({date} => [proj_1, proj_2, ...])
 
       public function __construct($uid, $fname, $lname) {
         $this->uid = $uid;
@@ -122,6 +122,20 @@
   
       public function getProjects() {
         return $this->projects;
+      }
+
+      public function getMaxProjectsInOneDay() {
+        $maxProjectsInOneDay = 0;
+        foreach($this->projects as $curDateProj) {
+          //var_dump(count($curProject)); // debug
+          //echo($this->fname.': '.substr(key($curProject), 0, 10).'<br>'); // debug
+          $curKey = key($curDateProj);   
+          if (count($curDateProj[$curKey]) > $maxProjectsInOneDay) {
+            $maxProjectsInOneDay = count($curDateProj[$curKey]);
+          }
+        }
+
+        return $maxProjectsInOneDay;
       }
 
       public function getFirstName() {
@@ -139,12 +153,14 @@
       public function addProject($date, $project) { 
         $shared = False;
         // check if project shares date
-        foreach($this->projects as $curDateProj) {
-          if ($date == $curDateProj) {
+        foreach($this->projects as &$curDateProj) {
+          if ($date == key($curDateProj)) {
+            //var_dump($curDateProj); //debug
             array_push($curDateProj[$date], $project);
             $shared = True;
           }
         }
+        // no project already on date
         if (!$shared) {
           $projEntry = array($date=>[$project]);
           array_push($this->projects, $projEntry);
@@ -253,12 +269,12 @@
 
         // for each employee
         while($employee = mysqli_fetch_assoc($allEmployees)) {        
-            echo($employee["firstname"].'<br>');
+            //echo($employee["firstname"].'<br>'); // debug
             // check if employee already in array
             $flagIsIn = False;
             $uid = $employee["uid"];  
             foreach($employeeProjectMap as $curEmployee) {
-              echo($curEmployee->getUID().' = '.$uid.' => ');
+              //echo($curEmployee->getUID().' = '.$uid.' => '); // debug
               if ($curEmployee->getUID() == $uid) {
                 $thisEmployee = $curEmployee;
                 $flagIsIn = True;
@@ -283,61 +299,53 @@
             */
             // get all the project ids and dates of those projects for the user
             $sqlGetRelations = "SELECT * FROM relations WHERE uid=$uid";
+            
+            // loop through all relations for current employee
+            $allRelations = mysqli_query($conn, $sqlGetRelations);
+            while($relation = mysqli_fetch_assoc($allRelations)) {
 
-            // loop through 5 days
-            for ($x = 0; $x < 5; $x++) {
-                $allRelations = mysqli_query($conn, $sqlGetRelations);
+              // if date of project within 5 days add to employee object
+              $currentDay = substr($relation["date"], 0, 10);  
+              if(in_array($currentDay, $next5WeekDays)) {
 
-                // Loop through all the relations for that user
-                $printed = False;
-                $curEmployeeProj = [];
-                while($relation = mysqli_fetch_assoc($allRelations)) {
-                  
-                  // get this relation project from project table
-                  $pid = $relation["pid"];
-                  $sqlGetProject = "SELECT * FROM projects WHERE pid=$pid";
-                  $projectData = mysqli_query($conn, $sqlGetProject);
-                  $project = mysqli_fetch_assoc($projectData);
+                // get this relation project from project table
+                $pid = $relation["pid"];
+                $sqlGetProject = "SELECT * FROM projects WHERE pid=$pid";
+                $projectData = mysqli_query($conn, $sqlGetProject);
+                $project = mysqli_fetch_assoc($projectData);
 
-                  $currentDay = substr($relation["date"], 0, 10);   
-                  // if day in next 5 weekdays                 
-                  if ($currentDay == $next5WeekDays[$x]) {
-                      $thisEmployee->addProject($relation["date"], $project); // add prject to this employee object
-                      $printed = True;
-                      //$buroughColor = whatColor($project["borough"]);
-                      //echo('<td style="background-color:'.$buroughColor.';">'.$project["address"].'</td>');
-                      break;
-                  } 
-                }
-                // print blank cell if no data
-                if ($printed == False) {
-                    //echo('<td></td>');
-                }
+                $thisEmployee->addProject(substr($relation["date"], 0, 10), $project); // add project to this employee object
+              }
             }
+
             //print_r($thisEmployee->projects); // debug
             //echo("<tr></tr>");
             array_push($employeeProjectMap, $thisEmployee);
         }
-        var_dump($employeeProjectMap);
+        //var_dump($employeeProjectMap); // debug
     } else {
         echo "0 results";
     }
     
     foreach($employeeProjectMap as $employee) {
       // add row with name
+      $rowSpanVal = $employee->getMaxProjectsInOneDay();
+      
       echo('
               <tr>
-                <td>'.$employee->getFirstName().' '. $employee->getLastName().'</td>
+                <td rowspan="'.$rowSpanVal.'">'.$employee->getFirstName().' '. $employee->getLastName().'</td>
       ');
+
+      /*
       $projects = $employee->getProjects();
       foreach($projects as $project) {
-        
+        $buroughColor = whatColor($project["borough"]);
+        echo('<td style="background-color:'.$buroughColor.';">'.$project["address"].'</td>');
+        echo("<tr></tr>");        
       }
-      $buroughColor = whatColor($project["borough"]);
-      echo('<td style="background-color:'.$buroughColor.';">'.$project["address"].'</td>');
-      echo("<tr></tr>");
+      */
     }
-/*
+    /*
     // debug
     foreach($employeeProjectMap as $employeeObj) {
       $employeeProject = $employeeObj->getProjects();
