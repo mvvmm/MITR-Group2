@@ -28,7 +28,7 @@
                       <label for="borough">Borough</label>
                       <select name="borough" id="borough" class="form-control" required>
                           <option selected disabled>Borough</option>
-                          <option value="Bronx">Bronx</option>
+                          <option value="The Bronx">The Bronx</option>
                           <option value="Brooklyn">Brooklyn</option>
                           <option value="Manhattan">Manhattan</option>
                           <option value="Queens">Queens</option>
