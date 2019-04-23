@@ -74,15 +74,15 @@
     <?php generateUserSchedule();
   } elseif($user_type == "scheduler"){
     // color constants
-    $BronxColor        = "#80e5fc"; // blue
+    $TheBronxColor     = "#80e5fc"; // blue
     $BrooklynColor     = "#ffe270"; // yellow
-    $ManhattenColor    = "#f46666"; // red
+    $ManhattanColor    = "#f46666"; // red
     $QueensColor       = "#aaf26f"; // green
     $StatenIslandColor = "#e2aaff"; // purple 
     
-    $BronxTextColor        = "#2c5b66"; // dark blue
+    $TheBronxTextColor     = "#2c5b66"; // dark blue
     $BrooklynTextColor     = "#7f6e2a"; // dark yellow
-    $ManhattenTextColor    = "#681f1f"; // dark red
+    $ManhattanTextColor    = "#681f1f"; // dark red
     $QueensTextColor       = "#3b5e1f"; // dark green
     $StatenTextIslandColor = "#4b3159"; // dark purple 
     ?>
@@ -94,9 +94,9 @@
             <tr>
               <?php 
                 echo('
-                <td style="width: 20%; background-color:'.$BronxColor.'; color:'.$BronxTextColor.';">Bronx</td>    
+                <td style="width: 20%; background-color:'.$TheBronxColor.'; color:'.$TheBronxTextColor.';">The Bronx</td>    
                 <td style="width: 20%; background-color:'.$BrooklynColor.'; color:'.$BrooklynTextColor.';">Brooklyn</td>         
-                <td style="width: 20%; background-color:'.$ManhattenColor.'; color:'.$ManhattenTextColor.';"; >Manhattan</td>        
+                <td style="width: 20%; background-color:'.$ManhattanColor.'; color:'.$ManhattanTextColor.';"; >Manhattan</td>        
                 <td style="width: 20%; background-color:'.$QueensColor.'; color:'.$QueensTextColor.';">Queens</td>
                 <td style="width: 20%; background-color:'.$StatenIslandColor.'; color:'.$StatenTextIslandColor.';">Staten Island</td>
                 ');
@@ -127,8 +127,6 @@
       public function getMaxProjectsInOneDay() {
         $maxProjectsInOneDay = 0;
         foreach($this->projects as $curDateProj) {
-          //var_dump(count($curProject)); // debug
-          //echo($this->fname.': '.substr(key($curProject), 0, 10).'<br>'); // debug
           $curKey = key($curDateProj);   
           if (count($curDateProj[$curKey]) > $maxProjectsInOneDay) {
             $maxProjectsInOneDay = count($curDateProj[$curKey]);
@@ -155,7 +153,6 @@
         // check if project shares date
         foreach($this->projects as &$curDateProj) {
           if ($date == key($curDateProj)) {
-            //var_dump($curDateProj); //debug
             array_push($curDateProj[$date], $project);
             $shared = True;
           }
@@ -263,72 +260,59 @@
                 <tbody>    
     ');
 
-    // loop through all employees in database
+    // loop through all employees in database and add data to an array
     $employeeProjectMap = [];
     if (mysqli_num_rows($allEmployees) > 0) {
 
-        // for each employee
-        while($employee = mysqli_fetch_assoc($allEmployees)) {        
-            //echo($employee["firstname"].'<br>'); // debug
-            // check if employee already in array
-            $flagIsIn = False;
-            $uid = $employee["uid"];  
-            foreach($employeeProjectMap as $curEmployee) {
-              //echo($curEmployee->getUID().' = '.$uid.' => '); // debug
-              if ($curEmployee->getUID() == $uid) {
-                $thisEmployee = $curEmployee;
-                $flagIsIn = True;
-                //echo($curEmployee->getUID().' = '.$uid);
-                break;
-              }
-            }
-            echo('<br><br>'); //debug
-            // make new if none exists
-            if (!$flagIsIn) {               
-              $fname = $employee["firstname"];
-              $lname = $employee["lastname"];
-              $thisEmployee = new Employee($uid, $fname, $lname);
-            } 
-           
-            /*
-            // add row with name
-            echo('
-                <tr>
-                    <td>'.$employee["firstname"] .' '. $employee["lastname"].'</td>
-            ');
-            */
-            // get all the project ids and dates of those projects for the user
-            $sqlGetRelations = "SELECT * FROM relations WHERE uid=$uid";
-            
-            // loop through all relations for current employee
-            $allRelations = mysqli_query($conn, $sqlGetRelations);
-            while($relation = mysqli_fetch_assoc($allRelations)) {
+      // for each employee
+      while($employee = mysqli_fetch_assoc($allEmployees)) {        
 
-              // if date of project within 5 days add to employee object
-              $currentDay = substr($relation["date"], 0, 10);  
-              if(in_array($currentDay, $next5WeekDays)) {
-
-                // get this relation project from project table
-                $pid = $relation["pid"];
-                $sqlGetProject = "SELECT * FROM projects WHERE pid=$pid";
-                $projectData = mysqli_query($conn, $sqlGetProject);
-                $project = mysqli_fetch_assoc($projectData);
-
-                $thisEmployee->addProject(substr($relation["date"], 0, 10), $project); // add project to this employee object
-              }
-            }
-
-            //print_r($thisEmployee->projects); // debug
-            //echo("<tr></tr>");
-            array_push($employeeProjectMap, $thisEmployee);
+        // check if employee already in array
+        $flagIsIn = False;
+        $uid = $employee["uid"];  
+        foreach($employeeProjectMap as $curEmployee) {
+          if ($curEmployee->getUID() == $uid) {
+            $thisEmployee = $curEmployee;
+            $flagIsIn = True;
+            break;
+          }
         }
-        //var_dump($employeeProjectMap); // debug
+        
+        // make new if none exists
+        if (!$flagIsIn) {               
+          $fname = $employee["firstname"];
+          $lname = $employee["lastname"];
+          $thisEmployee = new Employee($uid, $fname, $lname);
+        } 
+        
+        // get all the project ids and dates of those projects for the user
+        $sqlGetRelations = "SELECT * FROM relations WHERE uid=$uid";
+        
+        // loop through all relations for current employee
+        $allRelations = mysqli_query($conn, $sqlGetRelations);
+        while($relation = mysqli_fetch_assoc($allRelations)) {
+
+          // if date of project within 5 days add to employee object
+          $currentDay = substr($relation["date"], 0, 10);  
+          if(in_array($currentDay, $next5WeekDays)) {
+
+            // get this relation project from project table
+            $pid = $relation["pid"];
+            $sqlGetProject = "SELECT * FROM projects WHERE pid=$pid";
+            $projectData = mysqli_query($conn, $sqlGetProject);
+            $project = mysqli_fetch_assoc($projectData);
+
+            $thisEmployee->addProject(substr($relation["date"], 0, 10), $project); // add project to this employee object
+          }
+        }
+        array_push($employeeProjectMap, $thisEmployee); // add employee to list of employees
+      }
     } else {
         echo "0 results";
     }
-
-    // loop through all employees
-    foreach($employeeProjectMap as $employee) {
+ 
+    // loop through all employees and print out table
+    foreach($employeeProjectMap as &$employee) {
       
       // add row with name
       $rowSpanVal = $employee->getMaxProjectsInOneDay();
@@ -338,65 +322,48 @@
                 <td rowspan="'.$rowSpanVal.'">'.$employee->getFirstName().' '. $employee->getLastName().'</td>
       ');
 
-      // loop though
+      // create all rows for current employee
       for($i = 0; $i < $rowSpanVal; $i++) {
-        // start new now if one or more already complete
+         
+        // start new row if one or more already complete
         if ($i >= 1) {
           echo('<tr>');
         }
         
         // loop through next 5 days
         foreach($next5WeekDays as $curTableDate) {
-          // cause php data storage sucks
-          foreach($projects as $projectDayContainer) {
-            // loop through all projects of current employee
-            foreach($projectDayContainer as $projectDate => $projectList) {
-              // check if projct on that day
+          $printed = False;
+          // loop through projects by groupped by date
+          foreach($projects as &$projectDayContainer) {
+           
+            // loop through all projects of associated date
+            foreach($projectDayContainer as $projectDate => &$projectList) {
+              
+              // check if project on that day
               if ($curTableDate == $projectDate) {
+               
                 // output and delete first project associated with date
                 $buroughColor = whatColor($projectList[0]["borough"]);
                 echo('<td style="background-color:'.$buroughColor.';">'.$projectList[0]["address"].'</td>');
-                array_splice($projectList, 0, 1);
-                /*
-                foreach($projectList as $project) {
-                  $buroughColor = whatColor($project["borough"]);
-                  echo('<td style="background-color:'.$buroughColor.';">'.$project["address"].'</td>');
-
+                array_shift($projectList); // remove to avoid duplicates
+                $printed = True;
+                
+                // remove date entry if empty
+                if (count($projectList) == 0) {
+                  unset($projectDayContainer[$projectDate]);
                 }
-                */
-              // if no project on that day make empty cell
-              } else {
-                echo('<td></td>');
               }
+ 
             }
-            
           } 
+          // if no project on that day make empty cell
+          if ($printed == False) {
+            echo('<td></td>');
+          }
         }
-        echo('</tr>');
+        echo('</tr>'); 
       }
-
-      /*
-      foreach($projects as $projectDate) {
-        $buroughColor = whatColor($project["borough"]);
-        echo('<td style="background-color:'.$buroughColor.';">'.$project["address"].'</td>');
-        echo("<tr></tr>");        
-      }
-      */
     }
-    /*
-    // debug
-    foreach($employeeProjectMap as $employeeObj) {
-      $employeeProject = $employeeObj->getProjects();
-      var_dump($employeeProject);
-      echo('<br><br>');
-      
-      foreach($employeeProject as $curProject) {
-        print_r($employeeObj->getName().' ');
-        var_dump($curProject);
-        echo('<br><br>');
-   
-    }
-       }*/
     ?>
 
     </body>
