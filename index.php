@@ -75,6 +75,7 @@
   } elseif($user_type == "scheduler"){
     include 'scheduler_index.php';
     ?>
+    
     </body>
 
     </html>

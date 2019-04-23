@@ -1,38 +1,6 @@
-<?php    
-    // color constants  
-    $TheBronxColor     = "#80e5fc"; // blue
-    $BrooklynColor     = "#ffe270"; // yellow
-    $ManhattanColor    = "#f46666"; // red
-    $QueensColor       = "#aaf26f"; // green
-    $StatenIslandColor = "#e2aaff"; // purple 
-    
-    $TheBronxTextColor     = "#2c5b66"; // dark blue
-    $BrooklynTextColor     = "#7f6e2a"; // dark yellow
-    $ManhattanTextColor    = "#681f1f"; // dark red
-    $QueensTextColor       = "#3b5e1f"; // dark green
-    $StatenTextIslandColor = "#4b3159"; // dark purple 
-?>
-
-    <!-- build legend -->
-    <div class="container"> 
-      <table class="table text-center table-fluid">
-          <thead class="thead-dark font-weight-bold">
-            <tr>
-              <?php 
-                echo('
-                <td style="width: 20%; background-color:'.$TheBronxColor.'; color:'.$TheBronxTextColor.';">The Bronx</td>    
-                <td style="width: 20%; background-color:'.$BrooklynColor.'; color:'.$BrooklynTextColor.';">Brooklyn</td>         
-                <td style="width: 20%; background-color:'.$ManhattanColor.'; color:'.$ManhattanTextColor.';"; >Manhattan</td>        
-                <td style="width: 20%; background-color:'.$QueensColor.'; color:'.$QueensTextColor.';">Queens</td>
-                <td style="width: 20%; background-color:'.$StatenIslandColor.'; color:'.$StatenTextIslandColor.';">Staten Island</td>
-                ');
-              ?>
-            </tr>
-          </thead>
-      </table>
-
-
     <?php
+    include 'borough_colors.php';
+    
     class Employee {
       private $uid;
       private $fname;
