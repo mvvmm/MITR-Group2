@@ -1,6 +1,6 @@
 <?php require_once 'controllers/functions.php'?>
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <?php include 'style.php'?>
   <?php include 'script.php'?>
@@ -8,7 +8,10 @@
   <title>JANRenovation</title>
 </head>
 <body>
-  <?php include 'navbar.php';
+  <div class="p-5">
+    <?php include 'navbar.php';?>
+  </div>
+  <?php
   $user_type = getPrivilege();
   if($user_type == "employee"){?>
 
@@ -69,9 +72,14 @@
 
 
     <?php generateUserSchedule();
-  } elseif($user_type == "scheduler"){?>
-    <br><br>
-    <h1>Schedualer Test</h1>
+  } elseif($user_type == "scheduler"){
+    include 'scheduler_index.php';
+    ?>
+    
+    </body>
+
+    </html>
+
     <?php
   } elseif($user_type == "admin"){?>
     <br><br>
