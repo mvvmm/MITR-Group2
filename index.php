@@ -73,6 +73,7 @@
 
     <?php generateUserSchedule();
   } elseif($user_type == "scheduler"){
+    include 'borough_colors.php';
     ?>
     <div class="container">
     <?php
