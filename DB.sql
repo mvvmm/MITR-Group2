@@ -3,7 +3,7 @@ USE `janrenovation`;
 
 CREATE TABLE `projects` (
   `pid` int(11) NOT NULL,
-  `address` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `borough` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `starttime` datetime DEFAULT NULL,
   `endtime` datetime DEFAULT NULL,
@@ -28,7 +28,8 @@ CREATE TABLE `timesheet` (
   `uid` int(11) NOT NULL,
   `pid` int(11) NOT NULL,
   `starttime` datetime DEFAULT NULL,
-  `endtime` datetime DEFAULT NULL
+  `endtime` datetime DEFAULT NULL,
+  `inlocation` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `users` (
