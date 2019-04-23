@@ -73,9 +73,12 @@
 
     <?php generateUserSchedule();
   } elseif($user_type == "scheduler"){
+    ?>
+    <div class="container">
+    <?php
     include 'scheduler_index.php';
     ?>
-    
+    </div>
     </body>
 
     </html>
