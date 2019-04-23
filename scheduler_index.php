@@ -211,14 +211,27 @@
       // add row with name
       $rowSpanVal = $employee->getMaxProjectsInOneDay();
       $projects = $employee->getProjects();
-      echo('
-              <tr>
+
+      // fill with all blank values if no projects
+      if ($rowSpanVal == 0) {
+        echo('
+            <tr>
+                <td>'.$employee->getFirstName().' '. $employee->getLastName().'</td>
+        ');
+        for ($j = 0; 5 > $j; $j++) {
+            echo('<td>&nbsp</td>');
+        }
+        echo('</tr>');
+      } else {
+        echo('
+            <tr>
                 <td rowspan="'.$rowSpanVal.'">'.$employee->getFirstName().' '. $employee->getLastName().'</td>
-      ');
+        ');
+      }
 
       // create all rows for current employee
       for($i = 0; $i < $rowSpanVal; $i++) {
-         
+
         // start new row if one or more already complete
         if ($i >= 1) {
           echo('<tr>');
