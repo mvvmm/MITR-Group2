@@ -24,6 +24,9 @@ if(isset($_COOKIE['JAN-SESSION'])){
                   <li>
                     <a class="nav-link" href="edit_account.php">Edit Account</a>
                   </li>
+                  <li>
+                    <a class="nav-link" href="timesheet.php">View Clocked Hours</a>
+                  </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                   <li><a class="nav-link" href="controllers/logout_controller.php">Logout</a></li>
