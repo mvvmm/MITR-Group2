@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <table class="table text-center table-fluid">
     <thead class="thead-dark font-weight-bold">
       <tr>
@@ -15,7 +15,7 @@
         $QueensTextColor       = "#3b5e1f"; // dark green
         $StatenTextIslandColor = "#4b3159"; // dark purple
           echo('
-          <td style="width: 20%; background-color:'.$BronxColor.';">Bronx</td>
+          <td style="width: 20%; background-color:'.$BronxColor.';">The Bronx</td>
           <td style="width: 20%; background-color:'.$BrooklynColor.';">Brooklyn</td>
           <td style="width: 20%; background-color:'.$ManhattenColor.';">Manhattan</td>
           <td style="width: 20%; background-color:'.$QueensColor.';">Queens</td>
