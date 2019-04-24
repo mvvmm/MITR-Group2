@@ -17,6 +17,7 @@ if (isset($_POST['dateTime']) && isset($_POST['projectAddress'])){
   $IO = $_POST['IO'];
   $uid = getUID();
   $projectAddress = $_POST['projectAddress'];
+  $inrange = $_POST['inrange'];
 
   $conn = dbConnect();
   $stmt = $conn->prepare('SELECT pid FROM projects WHERE address = :address ');
@@ -44,10 +45,11 @@ if (isset($_POST['dateTime']) && isset($_POST['projectAddress'])){
       window.location.replace(\" ../clock_IO.php \");
       </script>";
     }else{
-      $stmt = $conn->prepare('INSERT INTO timesheet (uid,pid,starttime) VALUES (:uid,:pid,:starttime)');
+      $stmt = $conn->prepare('INSERT INTO timesheet (uid,pid,starttime,inlocation) VALUES (:uid,:pid,:starttime,:inlocation)');
       $stmt->bindParam(':uid', $uid);
       $stmt->bindParam(':pid', $pid);
       $stmt->bindParam(':starttime', $date);
+      $stmt->bindParam(':inlocation', $inrange);
       $stmt->execute();
       echo "<script>
       alert('Clocked in successfully');

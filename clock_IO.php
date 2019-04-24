@@ -48,7 +48,7 @@
 
               <div class="col-md-6">
                 <div class="form-group">
-                  <select class="form-control" name="projectAddress" required>
+                  <select class="form-control projectAddress" name="projectAddress" required>
                     <option selected disabled>Project Address</option>
                     <?php generateUsersActiveProjects();?>
                   </select>
@@ -56,8 +56,10 @@
               </div>
             </div>
 
+            <input id="inrange" type=hidden name="inrange" value=0></input>
+
             <div class="text-center">
-              <button class="btn btn-dark btn-clock text-uppercase" type="submit" name="submit">Submit</button>
+              <button class="btn btn-dark btn-clock text-uppercase" type="submit" name="submit" id="submit">Submit</button>
             </div>
 
             </form>
@@ -66,6 +68,55 @@
       </div>
     </div>
   </div>
+
+<script>
+// Change the value of whether you are at the site or not when the selector changes
+$('select.projectAddress').on('change', function() {
+    // Gets address and converts to coordinates via ajax call
+    var selected = $("select.projectAddress").children("option:selected").val();
+    var addressArray = selected.split(" ");
+    var urlStr = "https://maps.googleapis.com/maps/api/geocode/json?address=" + addressArray[0];
+    for (var i = 1; i < addressArray.length; i++) {
+        urlStr = urlStr + "+";
+        urlStr = urlStr + addressArray[i];
+    }
+    urlStr = urlStr + "&key=AIzaSyDJj0nMPRIAoY1MMWuFbT4I7zszT87vzm4";
+
+    $.ajax({
+        type: "GET",
+        url: urlStr,
+        success: function(responseData, status){
+
+            // Gets the user location
+            $.ajax({
+                type: "POST",
+                url: 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDJj0nMPRIAoY1MMWuFbT4I7zszT87vzm4',
+                success: function(data, status) {
+                    var projectLat = responseData.results[0].geometry.location.lat;
+                    var projectLng = responseData.results[0].geometry.location.lng;
+                    var userLat = data.location.lat;
+                    var userLng = data.location.lng;
+
+                    // Detect if user is close enough to project
+                    if (userLat <= projectLat + 0.002 && userLat >= projectLat - 0.002 && userLng <= projectLng + 0.002 && userLng >= projectLng - 0.002) {
+                        console.log("In range!");
+                        $('#inrange').val(1);
+                    } else {
+                        console.log("Not in range");
+                        $('#inrange').val(0);
+                    }
+                }, error: function(msg) {
+                    alert("There was a problem.");
+                }
+            });
+
+        }, error: function(msg) {
+            alert("There was a problem.");
+        }
+    });
+
+});
+</script>
 
 <script type="text/javascript" src="js/clock_IO.js"></script>
 </body>
