@@ -52,7 +52,7 @@ if(isset($_COOKIE['JAN-SESSION'])){
                     <a class="nav-link" href="edit_account.php">Edit Account</a>
                   </li>
                   <li>
-                    <a class="nav-link" href="labor_cost.php">View Labor Cost</a>
+                    <a class="nav-link" href="laborcost.php">View Labor Cost</a>
                   </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
