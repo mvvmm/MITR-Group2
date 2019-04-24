@@ -1,5 +1,6 @@
 <?php require_once 'controllers/session_check.php'?>
 <?php require_once 'controllers/functions.php'?>
+<?php require_once  "controllers/manager_check.php";?>
 <!doctype html>
 <html class="bg-light" lang="en">
   <head>
@@ -27,7 +28,7 @@
                       <label for="borough">Borough</label>
                       <select name="borough" id="borough" class="form-control" required>
                           <option selected disabled>Borough</option>
-                          <option value="Bronx">Bronx</option>
+                          <option value="The Bronx">The Bronx</option>
                           <option value="Brooklyn">Brooklyn</option>
                           <option value="Manhattan">Manhattan</option>
                           <option value="Queens">Queens</option>

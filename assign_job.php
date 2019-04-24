@@ -1,5 +1,6 @@
-<?php require_once 'controllers/session_check.php'?>
-<?php require_once 'controllers/functions.php'?>
+<?php require_once 'controllers/session_check.php';?>
+<?php require_once 'controllers/functions.php';?>
+<?php require_once  "controllers/manager_check.php";?>
 <!doctype html>
 <html class="bg-light" lang="en">
   <head>

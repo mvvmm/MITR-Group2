@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<?php require_once 'controllers/session_check.php';?>
+<!doctype html>
 <html lang="en">
 
 <head>

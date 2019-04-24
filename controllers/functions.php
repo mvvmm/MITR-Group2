@@ -111,4 +111,12 @@ function generateActiveProjects(){
   }
 }
 
+function generateBoroughs(){
+  echo "<option value='Manhattan'>Manhattan</option>";
+  echo "<option value='Brooklyn'>Brooklyn</option>";
+  echo "<option value='Queens'>Queens</option>";
+  echo "<option value='The Bronx'>The Bronx</option>";
+  echo "<option value='Staten Island'>Staten Island</option>";
+}
+
 ?>
