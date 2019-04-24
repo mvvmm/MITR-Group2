@@ -26,13 +26,17 @@ $('#laborcalc').submit(function(e){
             
             
           var parsed = data.split(" ");
-          // alert(parsed[0]);
-          var fullname = parsed[0]+" "+ parsed[1]
+       
+          var fullname = parsed[0]+" " +parsed[1];
           document.getElementById('fullname').value=fullname;
          
           
           document.getElementById('totalhours').value=parseFloat(parsed[2]).toFixed(2);
           document.getElementById('day').value=parsed[3];
+          
+          document.getElementById('atlocation').value=parsed[4];
+        
+        
         
             
         }

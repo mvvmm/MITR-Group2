@@ -24,7 +24,7 @@ if(isset($_POST['employee']) && $_POST['workDate']) {
     $query = $stmt->fetchAll();
 
     $labor_hours=0;
-
+    $inlocation = "Yes";
     $day = DateTime::createFromFormat("Y-m-d H:i:s", $workDateTime)->format("m/d/Y");
     foreach($query as $value){
     	
@@ -37,10 +37,26 @@ if(isset($_POST['employee']) && $_POST['workDate']) {
     		$hours = ($endtime-$starttime)/3600;
     		$labor_hours+=$hours;
     	}
+        $pid = $value["pid"];
+        $stmt = $conn->prepare('SELECT * FROM projects p, relations r where r.uid=:uid and p.pid = r.pid and r.pid=:pid');
+        $stmt->bindParam(':uid',$uid);
+        $stmt->bindParam(':pid',$pid);
+        $stmt->execute();
+        $query_a = $stmt->fetchAll();
+        foreach($query_a as $val){
+            if($value["inlocation"]==0){
+                $inlocation="No";
+            }
+        }
+
     }
+
+
+    
     echo($employee." ");
     echo($labor_hours." ");
     echo($day." ");
+    echo($inlocation);
 
 
 }
