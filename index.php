@@ -86,8 +86,9 @@
 
     <?php
   } elseif($user_type == "admin"){?>
-    <br><br>
-    <h1>Admin Test</h1>
+    <?php
+    include 'admin_index.php';
+    ?>
     <?php
   } else {
     header("Location: login.php");

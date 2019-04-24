@@ -80,6 +80,10 @@
                   <label for="totalhours">Total hours:</label>
                   <input class="form-control" type="text" id="totalhours" class="form-control" name="totalhours" placeholder="Hours" required disabled/>
                 </div>
+                <div class="form-group" id="form2">
+                  <label for="totalhours">At the location?</label>
+                  <input class="form-control" type="text" id="atlocation" class="form-control" name="atlocation" placeholder="Hours" required disabled/>
+                </div>
 
             </div>
           </div>
