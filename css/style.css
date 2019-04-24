@@ -62,3 +62,7 @@ ul{
   margin-right: 10px;
   margin-left:10px;
 }
+
+input.form-control{
+  background-color: white;
+}
