@@ -200,7 +200,7 @@ if (mysqli_num_rows($allEmployees) > 0) {
     array_push($employeeProjectMap, $thisEmployee); // add employee to list of employees
     }
 } else {
-    echo "0 results";
+    echo('<td colspan="6" style="text-align:center">No Results Found</td>');
 }
 
 // loop through all employees and print out table

@@ -85,10 +85,14 @@
     </html>
 
     <?php
-  } elseif($user_type == "admin"){?>
+  } elseif($user_type == "admin"){
+    include 'borough_colors.php';
+    ?>
+    <div class="container">
     <?php
     include 'admin_index.php';
     ?>
+    </div>
     <?php
   } else {
     header("Location: login.php");
