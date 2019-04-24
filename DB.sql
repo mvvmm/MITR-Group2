@@ -29,7 +29,8 @@ CREATE TABLE `timesheet` (
   `pid` int(11) NOT NULL,
   `starttime` datetime DEFAULT NULL,
   `endtime` datetime DEFAULT NULL,
-  `inlocation` tinyint(1) NOT NULL
+  `inlocationstart` tinyint(1) NOT NULL,
+  `inlocationend` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `users` (
