@@ -45,11 +45,11 @@ if (isset($_POST['dateTime']) && isset($_POST['projectAddress'])){
       window.location.replace(\" ../clock_IO.php \");
       </script>";
     }else{
-      $stmt = $conn->prepare('INSERT INTO timesheet (uid,pid,starttime,inlocation) VALUES (:uid,:pid,:starttime,:inlocation)');
+      $stmt = $conn->prepare('INSERT INTO timesheet (uid,pid,starttime,inlocationstart) VALUES (:uid,:pid,:starttime,:inlocationstart)');
       $stmt->bindParam(':uid', $uid);
       $stmt->bindParam(':pid', $pid);
       $stmt->bindParam(':starttime', $date);
-      $stmt->bindParam(':inlocation', $inrange);
+      $stmt->bindParam(':inlocationstart', $inrange);
       $stmt->execute();
       echo "<script>
       alert('Clocked in successfully');
@@ -66,10 +66,11 @@ if (isset($_POST['dateTime']) && isset($_POST['projectAddress'])){
       window.location.replace(\" ../clock_IO.php \");
       </script>";
     }else{
-      $stmt = $conn->prepare('UPDATE timesheet SET endtime=:endtime WHERE uid=:uid AND pid=:pid AND endtime IS NULL');
+      $stmt = $conn->prepare('UPDATE timesheet SET endtime=:endtime, inlocationend=:inlocationend WHERE uid=:uid AND pid=:pid AND endtime IS NULL');
       $stmt->bindParam(':endtime', $date);
       $stmt->bindParam(':uid', $uid);
       $stmt->bindParam(':pid', $pid);
+      $stmt->bindParam(':inlocationend', $inrange);
       $stmt->execute();
       echo "<script>
       alert('Clocked out successfully');
