@@ -15,10 +15,10 @@
   $user_type = getPrivilege();
   if($user_type == "employee"){?>
 
-  <div class="container-fluid pt-5">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-sm-12">
-        <h1 class="pt-5 pb-2 text-center">Your Work Schedule</h1>
+        <h1 class="pb-2 text-center">Your Work Schedule</h1>
       </div>
     </div>
 
