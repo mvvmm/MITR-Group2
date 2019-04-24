@@ -86,7 +86,7 @@ if(isset($_COOKIE['JAN-SESSION'])){
                           <a class="dropdown-item" href="create_project.php">Create Project</a>
                           <a class="dropdown-item" href="assign_job.php">Assign Jobs</a>
                           <a class="dropdown-item" href="edit_account.php">Edit Accounts</a>
-                          <a class="nav-link" href="labor_cost.php">View Labor Cost</a>
+                          <a class="dropdown-item" href="laborcost.php">View Labor Cost</a>
 
                       </div>
                   </li>
