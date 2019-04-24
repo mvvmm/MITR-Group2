@@ -59,6 +59,7 @@ if(isset($_COOKIE['JAN-SESSION'])){
                         <a class="dropdown-item" href="end_project.php">End Project</a>
                         <a class="dropdown-item" href="reactivate_project.php">Reactivate Project</a>
                         <a class="dropdown-item" href="assign_job.php">Schedule an Employee</a>
+                        <a class="dropdown-item" href="laborcost.php">View Labor Cost</a>
                     </div>
                 </li>
                 <li>
@@ -91,6 +92,8 @@ if(isset($_COOKIE['JAN-SESSION'])){
                           Projects
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                          <a class="dropdown-item" href="laborcost.php">View Labor Cost</a>
                           <a class="dropdown-item" href="create_project.php">Create a Project</a>
                           <a class="dropdown-item" href="edit_project.php">Edit a Project</a>
                           <a class="dropdown-item" href="end_project.php">End Project</a>
